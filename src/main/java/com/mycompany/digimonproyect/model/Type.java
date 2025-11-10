@@ -1,4 +1,4 @@
-package model;
+package com.mycompany.digimonproyect.model;
 
 /**
  *
