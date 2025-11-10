@@ -13,6 +13,6 @@ import com.mycompany.digimonproyect.service.ApiConnection;
 public class DigimonProyect {
 
     public static void main(String[] args) {
-       ApiConnection.askApi("Agumon");
+       
     }
 }

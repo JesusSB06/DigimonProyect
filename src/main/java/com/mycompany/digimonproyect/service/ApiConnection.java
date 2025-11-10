@@ -19,11 +19,11 @@ import java.util.logging.Logger;
  */
 public class ApiConnection {
 
-    private static final String DIGIMON = "https://digi-api.com/api/v1/digimon/";
+    private static final String DIGIMON_INDIVIDUAL = "https://digi-api.com/api/v1/digimon/";
 
     public static void askApi(String nameDigimon) {
         try {
-            URL urlJson = new URL(DIGIMON + nameDigimon);
+            URL urlJson = new URL(DIGIMON_INDIVIDUAL + nameDigimon);
             HttpURLConnection connection = (HttpURLConnection) urlJson.openConnection();
             connection.setRequestMethod("GET");
 
