@@ -1,10 +1,12 @@
-package com.mycompany.digimonproyect.model;
+package com.mycompany.digimonproyect.model.digimon;
+
+import java.io.Serializable;
 
 /**
  *
  * @author dam2_alu04@inf.ald
  */
-public class Type {
+public class Type implements Serializable{
 
     private int id;
     private String type;

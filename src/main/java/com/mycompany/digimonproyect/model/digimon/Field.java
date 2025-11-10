@@ -2,23 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.digimonproyect.model;
+package com.mycompany.digimonproyect.model.digimon;
 
-import com.mycompany.digimonproyect.model.Image;
+import java.io.Serializable;
 
 /**
  *
  * @author ADAN
  */
-public class Field {
+public class Field implements Serializable{
     private int id;
     private String field;
-    private Image image;
+    private String image;
 
     public Field() {
     }
 
-    public Field(int id, String field, Image image) {
+    public Field(int id, String field, String image) {
         this.id = id;
         this.field = field;
         this.image = image;
@@ -40,11 +40,11 @@ public class Field {
         this.field = field;
     }
 
-    public Image getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(String image) {
         this.image = image;
     }
     

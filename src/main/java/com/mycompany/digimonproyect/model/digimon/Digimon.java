@@ -2,8 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.digimonproyect.model;
+package com.mycompany.digimonproyect.model.digimon;
 
+import com.mycompany.digimonproyect.model.digimon.Description;
+import com.mycompany.digimonproyect.model.digimon.Attribute;
+import java.io.Serializable;
 import java.time.Year;
 import java.util.List;
 
@@ -11,7 +14,7 @@ import java.util.List;
  *
  * @author dam2_alu19@inf.ald
  */
-public class Digimon {
+public class Digimon implements Serializable{
     private int id;
     private String name;
     private boolean xAntiBody;
@@ -20,13 +23,13 @@ public class Digimon {
     private List<Type> types;
     private List<Attribute> attributes;
     private List<Field> fields;
-    private Year releaseDate;
+    private int releaseDate;
     private List<Description> descriptions;
     private List<Skill> skills;
     private List<Evolution> priorEvolutions;
     private List<Evolution> nextEvolutions;
 
-    public Digimon(int id, String name, boolean xAntiBody, List<Image> images, List<Level> levels, List<Type> types, List<Attribute> attributes, List<Field> fields, Year releaseDate, List<Description> descriptions, List<Skill> skills, List<Evolution> priorEvolutions, List<Evolution> nextEvolutions) {
+    public Digimon(int id, String name, boolean xAntiBody, List<Image> images, List<Level> levels, List<Type> types, List<Attribute> attributes, List<Field> fields, int releaseDate, List<Description> descriptions, List<Skill> skills, List<Evolution> priorEvolutions, List<Evolution> nextEvolutions) {
         this.id = id;
         this.name = name;
         this.xAntiBody = xAntiBody;
@@ -90,10 +93,10 @@ public class Digimon {
     public void setFields(List<Field> fields) {
         this.fields = fields;
     }
-    public Year getReleaseDate() {
+    public int getReleaseDate() {
         return releaseDate;
     }
-    public void setReleaseDate(Year releaseDate) {
+    public void setReleaseDate(int releaseDate) {
         this.releaseDate = releaseDate;
     }
     public List<Description> getDescriptions() {
