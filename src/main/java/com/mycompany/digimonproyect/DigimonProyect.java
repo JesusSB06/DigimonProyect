@@ -4,7 +4,12 @@
 
 package com.mycompany.digimonproyect;
 
+import com.mycompany.digimonproyect.controller.MainJFrameController;
+import com.mycompany.digimonproyect.model.Digimons;
+import com.mycompany.digimonproyect.model.User;
+import com.mycompany.digimonproyect.model.Users;
 import com.mycompany.digimonproyect.service.ApiConnection;
+import com.mycompany.digimonproyect.view.MainJFrame;
 
 /**
  *
@@ -13,6 +18,10 @@ import com.mycompany.digimonproyect.service.ApiConnection;
 public class DigimonProyect {
 
     public static void main(String[] args) {
-       
+        MainJFrame mainView= new MainJFrame();
+        Users usersModel = new Users();
+        Digimons digimonsModel = new Digimons();
+        MainJFrameController mc = new MainJFrameController(mainView, usersModel, digimonsModel);
+        mainView.setVisible(true);
     }
 }
