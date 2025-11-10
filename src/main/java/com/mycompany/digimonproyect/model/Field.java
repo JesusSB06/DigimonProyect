@@ -5,12 +5,13 @@
 package com.mycompany.digimonproyect.model;
 
 import com.mycompany.digimonproyect.model.Image;
+import java.io.Serializable;
 
 /**
  *
  * @author ADAN
  */
-public class Field {
+public class Field implements Serializable{
     private int id;
     private String field;
     private Image image;

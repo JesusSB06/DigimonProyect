@@ -4,11 +4,13 @@
  */
 package com.mycompany.digimonproyect.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dam2_alu19@inf.ald
  */
-public class Description {
+public class Description implements Serializable{
     private String origin;
     private String language;
     private String description;

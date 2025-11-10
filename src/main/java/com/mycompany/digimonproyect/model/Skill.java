@@ -4,11 +4,13 @@
  */
 package com.mycompany.digimonproyect.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dam2_alu19@inf.ald
  */
-public class Skill {
+public class Skill implements Serializable{
     private int id;
     private String skill;
     private String translation;

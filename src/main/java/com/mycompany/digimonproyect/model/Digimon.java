@@ -4,10 +4,12 @@
  */
 package com.mycompany.digimonproyect.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dam2_alu09@inf.ald
  */
-public class Digimon {
+public class Digimon implements Serializable{
     
 }

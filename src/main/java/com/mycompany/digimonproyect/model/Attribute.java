@@ -4,11 +4,13 @@
  */
 package com.mycompany.digimonproyect.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author ADAN
  */
-public class Attribute {
+public class Attribute implements Serializable{
     private int id;
     private String attribute;
 

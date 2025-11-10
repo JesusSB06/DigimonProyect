@@ -1,10 +1,12 @@
 package com.mycompany.digimonproyect.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dam2_alu04@inf.ald
  */
-public class Level {
+public class Level implements Serializable{
 
     private int id;
         private String level;

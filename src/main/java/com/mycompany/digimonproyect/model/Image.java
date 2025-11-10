@@ -1,10 +1,12 @@
 package com.mycompany.digimonproyect.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dam2_alu04@inf.ald
  */
-public class Image {
+public class Image implements Serializable{
 
     private String href;
     private boolean transparent;

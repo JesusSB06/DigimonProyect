@@ -4,13 +4,14 @@
  */
 package com.mycompany.digimonproyect.model;
 
+import java.io.Serializable;
 import java.net.URL;
 
 /**
  *
  * @author dam2_alu19@inf.ald
  */
-public class Evolution {
+public class Evolution implements Serializable{
     private int id;
     private String digimon;
     private String condition;
