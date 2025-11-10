@@ -8,6 +8,6 @@ package com.mycompany.digimonproyect.model;
  *
  * @author dam2_alu09@inf.ald
  */
-public class Digimon {
+public class User {
     
 }
