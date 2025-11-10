@@ -1,0 +1,9 @@
+com/mycompany/digimonproyect/DigimonProyect.class
+com/mycompany/digimonproyect/model/Level.class
+com/mycompany/digimonproyect/model/Skill.class
+com/mycompany/digimonproyect/service/ApiConnection.class
+com/mycompany/digimonproyect/model/Attribute.class
+com/mycompany/digimonproyect/model/Field.class
+com/mycompany/digimonproyect/model/Image.class
+com/mycompany/digimonproyect/model/Description.class
+com/mycompany/digimonproyect/model/Type.class
