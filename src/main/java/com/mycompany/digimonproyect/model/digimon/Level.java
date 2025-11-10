@@ -1,4 +1,4 @@
-package com.mycompany.digimonproyect.model;
+package com.mycompany.digimonproyect.model.digimon;
 
 import java.io.Serializable;
 

@@ -1,6 +1,6 @@
 package com.mycompany.digimonproyect.controller;
 
-import com.mycompany.digimonproyect.model.Digimon;
+import com.mycompany.digimonproyect.model.digimon.Digimon;
 import com.mycompany.digimonproyect.model.Digimons;
 import com.mycompany.digimonproyect.model.User;
 import com.mycompany.digimonproyect.model.Users;
