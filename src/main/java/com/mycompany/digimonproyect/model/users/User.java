@@ -1,6 +1,6 @@
 package com.mycompany.digimonproyect.model.users;
 
-import com.mycompany.digimonproyect.model.Digimon;
+import com.mycompany.digimonproyect.model.digimon.Digimon;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -38,7 +38,9 @@ public class User implements Serializable{
     public ArrayList<Digimon> getDigimon() {
         return digimon;
     }
-
+    public void delDigimon(int n){
+        digimon.remove(n);
+    }
     public void setDigimon(ArrayList<Digimon> digimon) {
         this.digimon = digimon;
     }
