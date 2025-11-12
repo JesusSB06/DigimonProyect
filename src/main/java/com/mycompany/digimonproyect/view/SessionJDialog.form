@@ -93,9 +93,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="usernameTextField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="loginButton">
       <Properties>
@@ -114,9 +111,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="passwordPasswordField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
