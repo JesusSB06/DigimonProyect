@@ -28,8 +28,6 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
-        jLabel1 = new javax.swing.JLabel();
         mainMenuBar = new javax.swing.JMenuBar();
         optionsMenu = new javax.swing.JMenu();
         sessionMenuItem = new javax.swing.JMenuItem();
@@ -37,11 +35,7 @@ public class MainJFrame extends javax.swing.JFrame {
         personalListMenuItem = new javax.swing.JMenuItem();
         quitMenuItem = new javax.swing.JMenuItem();
 
-        jMenu1.setText("jMenu1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("jLabel1");
 
         optionsMenu.setText("Options");
 
@@ -65,17 +59,11 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(352, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(253, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
+            .addGap(0, 276, Short.MAX_VALUE)
         );
 
         pack();
@@ -96,8 +84,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem digimonMenuItem;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar mainMenuBar;
     private javax.swing.JMenu optionsMenu;
     private javax.swing.JMenuItem personalListMenuItem;

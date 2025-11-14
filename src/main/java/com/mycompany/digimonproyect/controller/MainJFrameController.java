@@ -1,9 +1,8 @@
 package com.mycompany.digimonproyect.controller;
 
-import com.mycompany.digimonproyect.model.digimon.Digimon;
+
 import com.mycompany.digimonproyect.model.users.Users;
 import com.mycompany.digimonproyect.view.MainJFrame;
-import com.mycompany.digimonproyect.view.SessionJDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,6 +10,7 @@ public class MainJFrameController {
 
     private MainJFrame view;
     private Users userModel;
+
 
     public MainJFrameController(MainJFrame view, Users userModel) {
         this.view = view;
@@ -44,9 +44,7 @@ public class MainJFrameController {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SessionJDialog sjd = new SessionJDialog(view, true);
-                SessionJDialogController sjdc = new SessionJDialogController(sjd, userModel);
-                sjd.setVisible(true);
+                //TODO
             }
         };
         return al;
