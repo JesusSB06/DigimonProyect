@@ -1,6 +1,6 @@
 package com.mycompany.digimonproyect.model.users;
 
-import com.mycompany.digimonproyect.model.Digimon;
+import com.mycompany.digimonproyect.model.digimon.Digimon;
 import java.io.Serializable;
 import java.util.ArrayList;
 
