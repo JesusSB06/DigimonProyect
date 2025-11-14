@@ -1,16 +1,16 @@
 package com.mycompany.digimonproyect.controller;
 
-import com.mycompany.digimonproyect.model.digimon.Digimon;
 import com.mycompany.digimonproyect.model.Digimons;
-import com.mycompany.digimonproyect.model.users.User;
 import com.mycompany.digimonproyect.model.users.Users;
 import com.mycompany.digimonproyect.view.MainJFrame;
+import com.mycompany.digimonproyect.view.PersonalListJDialog;
 import com.mycompany.digimonproyect.view.SessionJDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class MainJFrameController {
 
@@ -22,6 +22,7 @@ public class MainJFrameController {
         this.view = view;
         this.userModel = userModel;
         this.digimonModel = digimonModel;
+        this.view.setBackgroundImage();
         this.view.addQuitMenuItemActionListener(getQuitMenuActionListener());
         this.view.addDigimonMenuItemActionListener(getDigimonMenuActionListener());
         this.view.addSessionMenuItemActionListener(getSessionMenuActionListener());
@@ -42,7 +43,18 @@ public class MainJFrameController {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
+                if (userModel.getCurrentUser() == null) {
+                    JOptionPane.showMessageDialog(view, "Log in to manage the list");
+                } else{
+                    if (userModel.getCurrentUser().getDigimon() == null) {
+                        JOptionPane.showMessageDialog(view, "Your digimon list is empty, introduce a digimon to manage the list");
+                    }else {
+                        PersonalListJDialog pld = new PersonalListJDialog(view, true);
+                        PersonalListController plc = new PersonalListController(pld, userModel);
+                        pld.setVisible(true);  
+                    }
+                     
+                }
             }
         };
         return al;
