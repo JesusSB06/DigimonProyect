@@ -20,7 +20,7 @@ public class Users implements Serializable{
 
     public Users() {
         users = new ArrayList();
-        currentUser = new User("Mariano","acb123.");
+        currentUser = new User("", "");
     }
 
     public User getCurrentUser() {

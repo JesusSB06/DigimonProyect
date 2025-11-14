@@ -12,7 +12,7 @@ public class User implements Serializable{
     private static final long serialVersionUID = 1L;
     private String name;
     private String password;
-    private ArrayList<Digimon> digimon;
+    private ArrayList<Digimon> digimon = new ArrayList<>();
 
     public User(String name, String password) {
         this.name = name;
@@ -39,7 +39,9 @@ public class User implements Serializable{
         return digimon;
     }
     public void delDigimon(int n){
-        digimon.remove(n);
+        if (n != -1) {
+            digimon.remove(n);
+        }
     }
     public void setDigimon(ArrayList<Digimon> digimon) {
         this.digimon = digimon;

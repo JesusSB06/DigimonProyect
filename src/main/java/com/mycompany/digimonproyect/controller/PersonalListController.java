@@ -20,25 +20,30 @@ public class PersonalListController {
         this.view.setNicknameButtonActionListener(this.getNicknameButtonActionListener());
         this.view.setShowButtonActionListener(this.getShowButtonActionListener());
         this.view.setTitleLabel(getPageTitle());
-        demo();
+         updateTable();
     }
     
     private String getPageTitle(){
-        return this.model.getCurrentUser().getName()+"'s Personal List";
+            return this.model.getCurrentUser().getName()+"'s Personal List";
     }
-    private void demo(){
+    private void updateTable(){
+        view.clearTable();
+        for (Digimon d: model.getCurrentUser().getDigimon()) {
             Vector row = new Vector();
             row.add("Imagen");
-            row.add("Agu");
-            row.add("Agumon");
+            row.add(d.getNickname());
+            row.add(d.getName());
             row.add(true);
             view.addRowTable(row);
+        }
+            
     }
     private ActionListener getDeleteButtonActionListener(){
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
+                model.getCurrentUser().delDigimon(view.getSelectionInt());
+                 updateTable();
             }
         };
         return al;
