@@ -2,6 +2,7 @@ package com.mycompany.digimonproyect.controller;
 
 import com.mycompany.digimonproyect.model.users.User;
 import com.mycompany.digimonproyect.model.users.Users;
+import com.mycompany.digimonproyect.view.DigimonJDialog;
 import com.mycompany.digimonproyect.view.SessionJDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +23,7 @@ public class SessionJDialogController {
     public SessionJDialogController(SessionJDialog view, Users model) {
         this.view = view;
         this.model = model;
-        manageLogInButton();
+        //manageLogInButton();
         this.view.addLogInButtonActionListener(this.getLogInButtonActionListener());
         this.view.addSingUpButtonActionListener(this.getSingUpButtonActionListener());
     }
@@ -83,6 +84,14 @@ public class SessionJDialogController {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                DigimonJDialog dd = new DigimonJDialog(view, true);
+                try {
+                    DigimonJDialogController ddc = new DigimonJDialogController(dd, model);
+                } catch (IOException ex) {
+                    Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                dd.setVisible(true);
+                /*
                 if (usernameTextFieldEmpty()) {
                     JOptionPane.showMessageDialog(view, "Introduce an user");
                 }
@@ -99,7 +108,7 @@ public class SessionJDialogController {
                     }
 
                 }
-                manageLogInButton();
+                manageLogInButton();*/
             }
         };
 
