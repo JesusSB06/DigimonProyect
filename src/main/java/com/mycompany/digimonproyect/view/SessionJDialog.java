@@ -1,8 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package com.mycompany.digimonproyect.view;
+
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -43,8 +44,6 @@ public class SessionJDialog extends javax.swing.JDialog {
 
         passwordLabel.setText("Password:");
 
-        usernameTextField.setText("jTextField1");
-
         loginButton.setText("Log In");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,8 +57,6 @@ public class SessionJDialog extends javax.swing.JDialog {
                 signupButtonActionPerformed(evt);
             }
         });
-
-        passwordPasswordField.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,6 +114,49 @@ public class SessionJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_signupButtonActionPerformed
 
+    public JButton getLoginButton() {
+        return loginButton;
+    }
+
+    public void setLoginButton(JButton loginButton) {
+        this.loginButton = loginButton;
+    }
+
+    public String getPassword() {
+        return passwordPasswordField.getText();
+    }
+
+    public void setPasswordPasswordField(JPasswordField passwordPasswordField) {
+        this.passwordPasswordField = passwordPasswordField;
+    }
+
+    public JButton getSignupButton() {
+        return signupButton;
+    }
+
+    public void setSignupButton(JButton signupButton) {
+        this.signupButton = signupButton;
+    }
+
+    public String getUsername() {
+        return usernameTextField.getText();
+    }
+
+    public void setUsernameTextField(JTextField usernameTextField) {
+        this.usernameTextField = usernameTextField;
+    }
+
+    public void addSingUpButtonActionListener(ActionListener al){
+        this.getSignupButton().addActionListener(al);
+    }
+    
+    public void addLogInButtonActionListener(ActionListener al){
+        this.getLoginButton().addActionListener(al);
+    }
+    
+    public void enableDisableLogInButton(boolean enableDisable){
+        this.getLoginButton().setEnabled(enableDisable);
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
