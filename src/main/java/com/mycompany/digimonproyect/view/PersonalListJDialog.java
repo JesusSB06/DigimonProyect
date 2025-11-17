@@ -135,6 +135,14 @@ public class PersonalListJDialog extends javax.swing.JDialog {
         DefaultTableModel model = (DefaultTableModel) this.digimonTable.getModel();
         model.addRow(row);
     }
+    public void clearTable() {
+        DefaultTableModel model=(DefaultTableModel) this.digimonTable.getModel();
+        model.setRowCount(0);
+        digimonTable.clearSelection();
+        digimonTable.revalidate();
+        digimonTable.repaint();
+    }
+    
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

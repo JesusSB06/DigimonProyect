@@ -4,7 +4,12 @@
  */
 package com.mycompany.digimonproyect.view;
 
+import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -28,6 +33,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        logoPanel = new javax.swing.JPanel();
         mainMenuBar = new javax.swing.JMenuBar();
         optionsMenu = new javax.swing.JMenu();
         sessionMenuItem = new javax.swing.JMenuItem();
@@ -36,6 +42,19 @@ public class MainJFrame extends javax.swing.JFrame {
         quitMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        logoPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
+        logoPanel.setLayout(logoPanelLayout);
+        logoPanelLayout.setHorizontalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        logoPanelLayout.setVerticalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 276, Short.MAX_VALUE)
+        );
 
         optionsMenu.setText("Options");
 
@@ -59,31 +78,61 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(logoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 276, Short.MAX_VALUE)
+            .addComponent(logoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addQuitMenuItemActionListener(ActionListener al){
+    public void addQuitMenuItemActionListener(ActionListener al) {
         this.quitMenuItem.addActionListener(al);
     }
-    public void addPersonalListMenuItemActionListener(ActionListener al){
+
+    public void addPersonalListMenuItemActionListener(ActionListener al) {
         this.personalListMenuItem.addActionListener(al);
     }
-    public void addDigimonMenuItemActionListener(ActionListener al){
+
+    public void addDigimonMenuItemActionListener(ActionListener al) {
         this.digimonMenuItem.addActionListener(al);
     }
-    public void addSessionMenuItemActionListener(ActionListener al){
+
+    public void addSessionMenuItemActionListener(ActionListener al) {
         this.sessionMenuItem.addActionListener(al);
     }
 
+    public void setImageLogoPanel(Image img) {
+
+        JPanel panelWithImage = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if (img != null) {
+
+                    g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+                }
+            }
+        };
+
+        panelWithImage.setPreferredSize(logoPanel.getSize());
+        panelWithImage.setLayout(new BorderLayout());
+
+        logoPanel.setLayout(new BorderLayout());
+        logoPanel.add(panelWithImage, BorderLayout.CENTER);
+        logoPanel.revalidate();
+        logoPanel.repaint();
+    }
+
+    public void setBackgroundImage() {
+        Image image1 = new ImageIcon("src/main/resources/digidex.png").getImage();
+        setImageLogoPanel(image1);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem digimonMenuItem;
+    private javax.swing.JPanel logoPanel;
     private javax.swing.JMenuBar mainMenuBar;
     private javax.swing.JMenu optionsMenu;
     private javax.swing.JMenuItem personalListMenuItem;

@@ -126,8 +126,8 @@ public class SessionJDialog extends javax.swing.JDialog {
         return passwordPasswordField.getText();
     }
 
-    public void setPasswordPasswordField(JPasswordField passwordPasswordField) {
-        this.passwordPasswordField = passwordPasswordField;
+    public void setPassword(String password) {
+        this.passwordPasswordField.setText(password);
     }
 
     public JButton getSignupButton() {
@@ -142,8 +142,8 @@ public class SessionJDialog extends javax.swing.JDialog {
         return usernameTextField.getText();
     }
 
-    public void setUsernameTextField(JTextField usernameTextField) {
-        this.usernameTextField = usernameTextField;
+    public void setUsername(String userName) {
+        this.usernameTextField.setText(userName);
     }
 
     public void addSingUpButtonActionListener(ActionListener al){

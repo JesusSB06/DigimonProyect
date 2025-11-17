@@ -31,7 +31,7 @@ public class Users implements Serializable {
     }
 
     public void setCurrentUser(User currentUser) {
-        currentUser = currentUser;
+        this.currentUser= currentUser;
     }
 
     public ArrayList<User> getUsers() {

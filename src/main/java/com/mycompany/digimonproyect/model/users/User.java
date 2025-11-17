@@ -39,6 +39,12 @@ public class User implements Serializable{
         return digimon;
     }
 
+    public void delDigimon(int n) {
+        if (n != -1) {
+            digimon.remove(n);
+        }
+    }
+    
     public void setDigimon(ArrayList<Digimon> digimon) {
         this.digimon = digimon;
     }

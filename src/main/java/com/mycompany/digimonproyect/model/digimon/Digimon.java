@@ -4,6 +4,14 @@
  */
 package com.mycompany.digimonproyect.model.digimon;
 
+import com.mycompany.digimonproyect.model.digimon.Attribute;
+import com.mycompany.digimonproyect.model.digimon.Description;
+import com.mycompany.digimonproyect.model.digimon.Evolution;
+import com.mycompany.digimonproyect.model.digimon.Field;
+import com.mycompany.digimonproyect.model.digimon.Image;
+import com.mycompany.digimonproyect.model.digimon.Level;
+import com.mycompany.digimonproyect.model.digimon.Skill;
+import com.mycompany.digimonproyect.model.digimon.Type;
 import java.util.List;
 import java.io.Serializable;
 
@@ -25,6 +33,7 @@ public class Digimon implements Serializable{
     private List<Skill> skills;
     private List<Evolution> priorEvolutions;
     private List<Evolution> nextEvolutions;
+    private String nickname;
 
     public Digimon(int id, String name, boolean xAntibody, List<Image> images, List<Level> levels, List<Type> types, List<Attribute> attributes, List<Field> fields, String releaseDate, List<Description> descriptions, List<Skill> skills, List<Evolution> priorEvolutions, List<Evolution> nextEvolutions) {
         this.id = id;
@@ -40,6 +49,17 @@ public class Digimon implements Serializable{
         this.skills = skills;
         this.priorEvolutions = priorEvolutions;
         this.nextEvolutions = nextEvolutions;
+    }
+
+    public String getNickname() {
+        if (nickname == null || nickname.isEmpty()) {
+            return "";
+        }
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public int getId() {
