@@ -4,9 +4,15 @@
  */
 package com.mycompany.digimonproyect.service;
 
+
+import com.google.gson.Gson;
+import com.mycompany.digimonproyect.model.digimon.Digimon;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -19,11 +25,12 @@ import java.util.logging.Logger;
  */
 public class ApiConnection {
 
-    private static final String DIGIMON_INDIVIDUAL = "https://digi-api.com/api/v1/digimon/";
+    private static final String DIGIMON_API = "https://digi-api.com/api/v1/digimon";
 
     public static void askApi(String nameDigimon) {
+        
         try {
-            URL urlJson = new URL(DIGIMON_INDIVIDUAL + nameDigimon);
+            URL urlJson = new URL(DIGIMON_API);
             HttpURLConnection connection = (HttpURLConnection) urlJson.openConnection();
             connection.setRequestMethod("GET");
 
@@ -32,19 +39,7 @@ public class ApiConnection {
 
             // Verifica si la conexión fue exitosa
             if (responseCode == HttpURLConnection.HTTP_OK) {
-                System.out.println("✅ Conexión exitosa. Código: " + responseCode);
-
-                // Leer la respuesta (opcional)
-                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String line;
-                StringBuilder response = new StringBuilder();
-                while ((line = reader.readLine()) != null) {
-                    response.append(line);
-                }
-                reader.close();
-
-                // Mostrar el JSON recibido
-                System.out.println("Respuesta: " + response.toString());
+                System.out.println("✅ Conexión exitosa. Código: " + responseCode);                
             } else {
                 System.out.println("❌ Error al conectar. Código: " + responseCode);
             }
@@ -56,5 +51,23 @@ public class ApiConnection {
         } catch (IOException ex) {
             Logger.getLogger(ApiConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    public static Digimon JsonToDigimon (String nameDigimon) {
+        Digimon digimon = null;
+        try {
+            URL urlDigimon = new URL(DIGIMON_API + "/" + nameDigimon);
+            HttpURLConnection connection = (HttpURLConnection) urlDigimon.openConnection();
+            connection.setRequestMethod("GET");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            Gson gson = new Gson();
+            digimon = gson.fromJson(reader, Digimon.class);
+            reader.close();
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ApiConnection.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ApiConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return digimon;
     }
 }
