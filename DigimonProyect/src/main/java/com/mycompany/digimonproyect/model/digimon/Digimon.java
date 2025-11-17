@@ -1,5 +1,17 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.mycompany.digimonproyect.model.digimon;
 
+import com.mycompany.digimonproyect.model.digimon.Attribute;
+import com.mycompany.digimonproyect.model.digimon.Description;
+import com.mycompany.digimonproyect.model.digimon.Evolution;
+import com.mycompany.digimonproyect.model.digimon.Field;
+import com.mycompany.digimonproyect.model.digimon.Image;
+import com.mycompany.digimonproyect.model.digimon.Level;
+import com.mycompany.digimonproyect.model.digimon.Skill;
+import com.mycompany.digimonproyect.model.digimon.Type;
 import java.util.List;
 import java.io.Serializable;
 
@@ -40,7 +52,7 @@ public class Digimon implements Serializable{
     }
 
     public String getNickname() {
-        if (nickname==null||nickname.isEmpty()) {
+        if (nickname == null || nickname.isEmpty()) {
             return "";
         }
         return nickname;

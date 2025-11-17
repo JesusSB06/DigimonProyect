@@ -8,8 +8,7 @@ import java.util.ArrayList;
  *
  * @author dam2_alu04@inf.ald
  */
-public class User implements Serializable {
-
+public class User implements Serializable{
     private static final long serialVersionUID = 1L;
     private String name;
     private String password;
@@ -45,9 +44,9 @@ public class User implements Serializable {
             digimon.remove(n);
         }
     }
-
+    
     public void setDigimon(ArrayList<Digimon> digimon) {
         this.digimon = digimon;
     }
-
+    
 }

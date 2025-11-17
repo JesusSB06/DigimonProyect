@@ -20,8 +20,7 @@ public class PersonalListController {
         this.view.setNicknameButtonActionListener(this.getNicknameButtonActionListener());
         this.view.setShowButtonActionListener(this.getShowButtonActionListener());
         this.view.setTitleLabel(getPageTitle());
-        updateTable();
-
+         updateTable();
     }
     
     private String getPageTitle(){

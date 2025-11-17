@@ -65,8 +65,12 @@ public class SessionJDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(usernameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(usernameTextField))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 230, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(signupButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(loginButton))
@@ -74,13 +78,9 @@ public class SessionJDialog extends javax.swing.JDialog {
                         .addComponent(titleLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                            .addComponent(passwordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usernameTextField)
-                            .addComponent(passwordPasswordField))))
+                        .addComponent(passwordLabel)
+                        .addGap(9, 9, 9)
+                        .addComponent(passwordPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -126,8 +126,8 @@ public class SessionJDialog extends javax.swing.JDialog {
         return passwordPasswordField.getText();
     }
 
-    public void setPassword(String password) {
-        this.passwordPasswordField.setText(password);
+    public void setPasswordPasswordField(JPasswordField passwordPasswordField) {
+        this.passwordPasswordField = passwordPasswordField;
     }
 
     public JButton getSignupButton() {
@@ -142,8 +142,8 @@ public class SessionJDialog extends javax.swing.JDialog {
         return usernameTextField.getText();
     }
 
-    public void setUsername(String userName) {
-        this.usernameTextField.setText(userName);
+    public void setUsernameTextField(JTextField usernameTextField) {
+        this.usernameTextField = usernameTextField;
     }
 
     public void addSingUpButtonActionListener(ActionListener al){

@@ -20,12 +20,10 @@ public class Users implements Serializable {
     private ArrayList<User> users;
     private User currentUser;
 
-    public Users() throws IOException, ClassNotFoundException {
-        File file = new File("users.ser");
-        file.createNewFile();
+    public Users() {
         users = new ArrayList();
         currentUser = null;
-        
+        File file = new File("users.ser");
     }
 
     public User getCurrentUser() {
@@ -33,7 +31,7 @@ public class Users implements Serializable {
     }
 
     public void setCurrentUser(User currentUser) {
-       this.currentUser = currentUser;
+        currentUser = currentUser;
     }
 
     public ArrayList<User> getUsers() {
@@ -63,8 +61,8 @@ public class Users implements Serializable {
         return dUsers;
     }
     
-    public User getUser (String name) throws IOException, ClassNotFoundException{
-        for (User u : deserializedList()) {
+    public User getUser (String name){
+        for (User u : users) {
             if (u.getName().equals(name)) {
                 return u;
             }

@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ */
 package com.mycompany.digimonproyect.view;
 
 import java.awt.event.ActionListener;
@@ -138,6 +142,8 @@ public class PersonalListJDialog extends javax.swing.JDialog {
         digimonTable.revalidate();
         digimonTable.repaint();
     }
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteButton;
