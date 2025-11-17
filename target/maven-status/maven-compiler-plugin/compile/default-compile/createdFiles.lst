@@ -2,6 +2,7 @@ com/mycompany/digimonproyect/model/users/Users.class
 com/mycompany/digimonproyect/view/MainJFrame.class
 com/mycompany/digimonproyect/model/digimon/Attribute.class
 com/mycompany/digimonproyect/controller/PersonalListController$2.class
+com/mycompany/digimonproyect/view/DigimonManagerDialog$1.class
 com/mycompany/digimonproyect/view/SessionJDialog.class
 com/mycompany/digimonproyect/controller/SessionJDialogController.class
 com/mycompany/digimonproyect/controller/MainJFrameController$2.class
@@ -10,12 +11,17 @@ com/mycompany/digimonproyect/model/digimon/Skill.class
 com/mycompany/digimonproyect/view/DigimonJDialog.class
 com/mycompany/digimonproyect/controller/SessionJDialogController$1.class
 com/mycompany/digimonproyect/service/ApiConnection.class
+com/mycompany/digimonproyect/view/DigimonJDialog$1.class
+com/mycompany/digimonproyect/controller/DigimonJDialogController$1.class
 com/mycompany/digimonproyect/controller/PersonalListController$1.class
+com/mycompany/digimonproyect/view/DigimonManagerDialog$1$1.class
 com/mycompany/digimonproyect/controller/MainJFrameController$4.class
 com/mycompany/digimonproyect/model/digimon/Evolution.class
 com/mycompany/digimonproyect/model/digimon/Description.class
+com/mycompany/digimonproyect/view/DigimonManagerDialog.class
 com/mycompany/digimonproyect/controller/PersonalListController$3.class
 com/mycompany/digimonproyect/DigimonProyect.class
+com/mycompany/digimonproyect/controller/DigimonJDialogController$2.class
 com/mycompany/digimonproyect/controller/DigimonJDialogController.class
 com/mycompany/digimonproyect/model/User.class
 com/mycompany/digimonproyect/model/digimon/Digimon.class
@@ -33,5 +39,6 @@ com/mycompany/digimonproyect/controller/MainJFrameController$3.class
 com/mycompany/digimonproyect/view/SessionJDialog$2.class
 com/mycompany/digimonproyect/model/Users.class
 com/mycompany/digimonproyect/controller/SessionJDialogController$2.class
+com/mycompany/digimonproyect/view/DigimonJDialog$2.class
 com/mycompany/digimonproyect/controller/PersonalListController.class
 com/mycompany/digimonproyect/model/digimon/Image.class

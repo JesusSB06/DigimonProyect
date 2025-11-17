@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.digimonproyect.view;
 
 import java.awt.BorderLayout;
@@ -124,7 +120,7 @@ public class MainJFrame extends javax.swing.JFrame {
         logoPanel.repaint();
     }
     public void setBackgroundImage(){
-        Image image1 = new ImageIcon("src/main/resources/digidex.png").getImage();
+        Image image1 = new ImageIcon("src/main/resources/img/digidex.png").getImage();
         setImageLogoPanel(image1);
     }
 

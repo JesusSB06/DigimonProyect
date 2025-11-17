@@ -130,10 +130,11 @@ public class SessionJDialogController {
                     Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                }System.out.println(model.getCurrentUser().getName());
             }
+            
         };
-
+        
         return al;
     }
 
