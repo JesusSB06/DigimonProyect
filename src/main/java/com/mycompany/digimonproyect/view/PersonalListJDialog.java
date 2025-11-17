@@ -143,6 +143,7 @@ public class PersonalListJDialog extends javax.swing.JDialog {
         digimonTable.repaint();
     }
     
+
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

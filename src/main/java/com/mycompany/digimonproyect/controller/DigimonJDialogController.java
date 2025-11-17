@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,6 +29,16 @@ public class DigimonJDialogController {
         this.view = view;
         this.userModel = userModel;
         this.digimon = null;
+        this.isCurrentUser();
+        this.view.createPanel(this.view.getLogoPanel(),"src/main/resources/img/digimon.jpeg");
+        this.view.setSearchButtonActionListener(this.setSearchButtonActionListener());
+    }
+    
+    public DigimonJDialogController(DigimonJDialog view, Users userModel, Digimon digimon) throws IOException {
+        this.view = view;
+        this.userModel = userModel;
+        this.digimon = digimon;
+        this.isCurrentUser();
         this.view.createPanel(this.view.getLogoPanel(),"src/main/resources/img/digimon.jpeg");
         this.view.setSearchButtonActionListener(this.setSearchButtonActionListener());
     }
@@ -47,6 +58,17 @@ public class DigimonJDialogController {
         return al;
     }
 
+    private ActionListener setAddToListButtonActionListener() {
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                userModel.getCurrentUser().getDigimon().add(digimon);
+                JOptionPane.showMessageDialog(view, "Se ha añadido el digimon correctamente " + digimon.getName() + " a tu lista");
+            }
+        };
+        return al;
+    }
+
     public Digimon getDigimon() {
         return digimon;
     }
@@ -55,6 +77,11 @@ public class DigimonJDialogController {
         this.digimon = digimon;
     }
     
+    private void isCurrentUser(){
+        if(userModel.getCurrentUser() == null){
+            view.enableAddToListButton(Boolean.FALSE);
+        }
+    }
 
     
 }

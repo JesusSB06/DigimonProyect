@@ -213,10 +213,10 @@ public class DigimonJDialog extends javax.swing.JDialog {
     public void createPanel(JPanel panel, String route) throws MalformedURLException, IOException {
         Image image = null;
         if(route.contains("https://")){
-            URL url = new URL(route); // ← String recibida de la API
+            URL url = new URL(route); 
             image = ImageIO.read(url);
         }else{
-            image = new ImageIcon("src/main/resources/img/logo.jpeg").getImage();
+            image = new ImageIcon(route).getImage();
         }
         
         setImageLogoPanel(image, panel);
@@ -240,7 +240,10 @@ public class DigimonJDialog extends javax.swing.JDialog {
     public void setAddToListButtonActionListener(ActionListener al){
         this.addToListButton.addActionListener(al);
     }
-
+  
+    public void enableAddToListButton(Boolean value) {
+        this.addToListButton.setEnabled(true);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToListButton;
     private javax.swing.JPanel backgroundPanel;

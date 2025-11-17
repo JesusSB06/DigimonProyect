@@ -45,7 +45,7 @@ public class SessionJDialogController {
                 } else {
                     JOptionPane.showMessageDialog(view, "Username not found.");
                     clearView();
-                }
+                }System.out.println(model.getCurrentUser().getName());
             }
     }
     private void verifySingUp() throws IOException, ClassNotFoundException {
@@ -132,8 +132,9 @@ public class SessionJDialogController {
                     Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            
         };
-
+        
         return al;
     }
 

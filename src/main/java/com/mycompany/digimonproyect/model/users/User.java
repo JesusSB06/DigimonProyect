@@ -15,6 +15,7 @@ public class User implements Serializable{
     private ArrayList<Digimon> digimon;
 
     public User(String name, String password) {
+        this.digimon = new ArrayList<>();
         this.name = name;
         this.password = password;
     }
