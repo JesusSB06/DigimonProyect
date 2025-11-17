@@ -3,6 +3,9 @@
 /home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/controller/MainJFrameController.java
 /home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/controller/PersonalListController.java
 /home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/controller/SessionJDialogController.java
+/home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/model/Digimons.java
+/home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/model/User.java
+/home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/model/Users.java
 /home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/model/digimon/Attribute.java
 /home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/model/digimon/Description.java
 /home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/model/digimon/Digimon.java
@@ -13,7 +16,6 @@
 /home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/model/digimon/Skill.java
 /home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/model/digimon/Type.java
 /home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/model/users/User.java
-/home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/model/users/UserManager.java
 /home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/model/users/Users.java
 /home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/service/ApiConnection.java
 /home/dam2_alu04@inf.ald/NetBeansProjects/DigimonProyect/src/main/java/com/mycompany/digimonproyect/view/DigimonJDialog.java

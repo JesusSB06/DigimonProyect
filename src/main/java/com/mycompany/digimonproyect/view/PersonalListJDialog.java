@@ -1,8 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package com.mycompany.digimonproyect.view;
+
+import java.awt.event.ActionListener;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,24 +27,124 @@ public class PersonalListJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        digimonScrollPane = new javax.swing.JScrollPane();
+        digimonTable = new javax.swing.JTable();
+        titleLabel = new javax.swing.JLabel();
+        nicknameButton = new javax.swing.JButton();
+        showButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        digimonTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Icon", "Nickname", "Name", "XAntibody"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        digimonScrollPane.setViewportView(digimonTable);
+
+        titleLabel.setText("Personal List");
+
+        nicknameButton.setText("Change Nickname..");
+
+        showButton.setText("Show Info..");
+
+        deleteButton.setText("Delete");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(titleLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 47, Short.MAX_VALUE)
+                                .addComponent(deleteButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nicknameButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(showButton))
+                            .addComponent(digimonScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titleLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(digimonScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nicknameButton)
+                    .addComponent(deleteButton)
+                    .addComponent(showButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setDeleteButtonActionListener(ActionListener al){
+        this.deleteButton.addActionListener(al);
+    }
+    public void setNicknameButtonActionListener(ActionListener al){
+        this.nicknameButton.addActionListener(al);
+    }
+    public void setShowButtonActionListener(ActionListener al){
+        this.showButton.addActionListener(al);
+    }
+    public void setTitleLabel(String s){
+        this.titleLabel.setText(s);
+    }
+    public String getSelection(){
+        return this.digimonTable.getValueAt(this.digimonTable.getSelectedRow(), 2).toString();
+    }
+    public int getSelectionInt(){
+        return this.digimonTable.getSelectedRow();
+    }
+    public void addRowTable(Vector row) {
+        DefaultTableModel model = (DefaultTableModel) this.digimonTable.getModel();
+        model.addRow(row);
+    }
+    public void clearTable() {
+        DefaultTableModel model=(DefaultTableModel) this.digimonTable.getModel();
+        model.setRowCount(0);
+        digimonTable.clearSelection();
+        digimonTable.revalidate();
+        digimonTable.repaint();
+    }
     
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton deleteButton;
+    private javax.swing.JScrollPane digimonScrollPane;
+    private javax.swing.JTable digimonTable;
+    private javax.swing.JButton nicknameButton;
+    private javax.swing.JButton showButton;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

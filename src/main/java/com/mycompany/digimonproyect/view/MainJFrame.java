@@ -4,7 +4,12 @@
  */
 package com.mycompany.digimonproyect.view;
 
+import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -28,8 +33,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
-        jLabel1 = new javax.swing.JLabel();
+        logoPanel = new javax.swing.JPanel();
         mainMenuBar = new javax.swing.JMenuBar();
         optionsMenu = new javax.swing.JMenu();
         sessionMenuItem = new javax.swing.JMenuItem();
@@ -37,11 +41,21 @@ public class MainJFrame extends javax.swing.JFrame {
         personalListMenuItem = new javax.swing.JMenuItem();
         quitMenuItem = new javax.swing.JMenuItem();
 
-        jMenu1.setText("jMenu1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        logoPanel.setBackground(new java.awt.Color(255, 255, 255));
+        logoPanel.setForeground(new java.awt.Color(242, 242, 242));
+
+        javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
+        logoPanel.setLayout(logoPanelLayout);
+        logoPanelLayout.setHorizontalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        logoPanelLayout.setVerticalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 276, Short.MAX_VALUE)
+        );
 
         optionsMenu.setText("Options");
 
@@ -65,17 +79,11 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(352, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
+            .addComponent(logoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(253, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
+            .addComponent(logoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -93,11 +101,36 @@ public class MainJFrame extends javax.swing.JFrame {
     public void addSessionMenuItemActionListener(ActionListener al){
         this.sessionMenuItem.addActionListener(al);
     }
+    public void setImageLogoPanel(Image img) {
+
+
+        JPanel panelWithImage = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if (img != null) {
+
+                    g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+                }
+            }
+        };
+
+        panelWithImage.setPreferredSize(logoPanel.getSize());
+        panelWithImage.setLayout(new BorderLayout());
+
+        logoPanel.setLayout(new BorderLayout());
+        logoPanel.add(panelWithImage, BorderLayout.CENTER);
+        logoPanel.revalidate();
+        logoPanel.repaint();
+    }
+    public void setBackgroundImage(){
+        Image image1 = new ImageIcon("src/main/resources/digidex.png").getImage();
+        setImageLogoPanel(image1);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem digimonMenuItem;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JPanel logoPanel;
     private javax.swing.JMenuBar mainMenuBar;
     private javax.swing.JMenu optionsMenu;
     private javax.swing.JMenuItem personalListMenuItem;
