@@ -24,7 +24,7 @@ public class Users implements Serializable {
         File file = new File("users.ser");
         file.createNewFile();
         users = new ArrayList();
-        currentUser = null;
+        currentUser = new User("","");
         
     }
 
@@ -54,12 +54,14 @@ public class Users implements Serializable {
         FileOutputStream fos = new FileOutputStream("users.ser");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(users);
+        oos.close();
     }
 
     public ArrayList<User> deserializedList() throws IOException, ClassNotFoundException {
         FileInputStream fis = new FileInputStream("users.ser");
         ObjectInputStream ois = new ObjectInputStream(fis);
         ArrayList<User> dUsers = (ArrayList<User>) ois.readObject();
+        ois.close();
         return dUsers;
     }
     

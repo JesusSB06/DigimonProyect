@@ -4,7 +4,10 @@
  */
 package com.mycompany.digimonproyect.view;
 
+import com.mycompany.digimonproyect.model.digimon.Digimon;
+import com.mycompany.digimonproyect.model.digimon.Field;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Image;
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
@@ -15,8 +18,13 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -211,18 +219,19 @@ public class DigimonJDialog extends javax.swing.JDialog {
         panel.repaint();
     }
     public void createPanel(JPanel panel, String route) throws MalformedURLException, IOException {
+        Image image = getImage(route);
+        setImageLogoPanel(image, panel);
+    }
+    public Image getImage(String route) throws IOException {
         Image image = null;
-        if(route.contains("https://")){
-            URL url = new URL(route); 
+        if (route.contains("https://")) {
+            URL url = new URL(route);
             image = ImageIO.read(url);
-        }else{
+        } else {
             image = new ImageIcon(route).getImage();
         }
-        
-        setImageLogoPanel(image, panel);
-
+        return image;
     }
-    
     public JPanel getLogoPanel(){
         return this.logoPanel;
     }
@@ -234,16 +243,28 @@ public class DigimonJDialog extends javax.swing.JDialog {
     }
 
     
-    public void setSearchButtonActionListener(ActionListener al){
+    public void setSearchButtonActionListener(ActionListener al) {
         this.searchButton.addActionListener(al);
     }
-    public void setAddToListButtonActionListener(ActionListener al){
+    public void setCancelButtonActionListener(ActionListener al){
+        this.cancelButton.addActionListener(al);
+    }
+    public void setAddToListButtonActionListener(ActionListener al) {
         this.addToListButton.addActionListener(al);
     }
-  
+
     public void enableAddToListButton(Boolean value) {
         this.addToListButton.setEnabled(true);
     }
+    public void setJListModel(DefaultListModel<String> model, Digimon digimon) {
+        if (this.fieldList == null) {
+            this.fieldList = new JList<String>(model);
+            this.fieldScrollPane = new JScrollPane(this.fieldList);
+        } else {
+            this.fieldList.setModel(model);
+        }
+    }
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToListButton;
     private javax.swing.JPanel backgroundPanel;

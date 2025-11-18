@@ -5,6 +5,7 @@
 package com.mycompany.digimonproyect.controller;
 
 import com.mycompany.digimonproyect.model.digimon.Digimon;
+import com.mycompany.digimonproyect.model.digimon.Field;
 import com.mycompany.digimonproyect.model.users.Users;
 import com.mycompany.digimonproyect.service.ApiConnection;
 import com.mycompany.digimonproyect.view.DigimonJDialog;
@@ -12,8 +13,12 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,6 +37,7 @@ public class DigimonJDialogController {
         this.isCurrentUser();
         this.view.createPanel(this.view.getLogoPanel(),"src/main/resources/img/digimon.jpeg");
         this.view.setSearchButtonActionListener(this.setSearchButtonActionListener());
+        this.view.setAddToListButtonActionListener(this.setAddToListButtonActionListener());
     }
     
     public DigimonJDialogController(DigimonJDialog view, Users userModel, Digimon digimon) throws IOException {
@@ -41,15 +47,20 @@ public class DigimonJDialogController {
         this.isCurrentUser();
         this.view.createPanel(this.view.getLogoPanel(),"src/main/resources/img/digimon.jpeg");
         this.view.setSearchButtonActionListener(this.setSearchButtonActionListener());
+        this.view.setCancelButtonActionListener(this.setCancelButtonActionListener());
     }
-    
-    private ActionListener setSearchButtonActionListener(){
+
+    private ActionListener setSearchButtonActionListener() {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 setDigimon(ApiConnection.JsonToDigimon(view.getSearchTextField()));
                 try {
-                    view.createPanel(view.getDigimonPanel(),digimon.getImages().get(0).getHref());
+                    // Verificar que el digimon tenga imágenes
+                    if (digimon != null && digimon.getImages() != null && !digimon.getImages().isEmpty()) {
+                        view.createPanel(view.getDigimonPanel(), digimon.getImages().get(0).getHref());
+                        view.setJListModel(addFieldToList(),digimon);
+                    }
                 } catch (IOException ex) {
                     Logger.getLogger(DigimonJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -62,8 +73,31 @@ public class DigimonJDialogController {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                if (userModel.getCurrentUser() == null) {
+                    JOptionPane.showMessageDialog(view, "Usuario no válido");
+                    return;
+                }
+                if (digimon == null) {
+                    JOptionPane.showMessageDialog(view, "Selecciona un digimon primero");
+                    return;
+                }
+                ArrayList<Digimon> digimonList = userModel.getCurrentUser().getDigimon();
+                if (digimonList == null) {
+                    digimonList = new ArrayList<>();
+                    userModel.getCurrentUser().setDigimon(digimonList);
+                }        
                 userModel.getCurrentUser().getDigimon().add(digimon);
                 JOptionPane.showMessageDialog(view, "Se ha añadido el digimon correctamente " + digimon.getName() + " a tu lista");
+            }
+        };
+        return al;
+    }
+    
+    private ActionListener setCancelButtonActionListener(){
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               view.dispose();
             }
         };
         return al;
@@ -82,6 +116,13 @@ public class DigimonJDialogController {
             view.enableAddToListButton(Boolean.FALSE);
         }
     }
-
-    
+    private DefaultListModel<String> addFieldToList() throws IOException {
+        DefaultListModel<String> model = new DefaultListModel<>();
+        if (digimon != null && digimon.getFields() != null) {
+            for (Field f : digimon.getFields()) {
+                model.addElement(f.getField()); 
+            }
+        }
+        return model;
+    }
 }
