@@ -261,10 +261,7 @@ public class DigimonJDialog extends javax.swing.JDialog {
 
     public void enableFieldComponents(boolean value) {
         this.factionsLabel.setVisible(value);
-        this.factionsLabel.setEnabled(value);
-        this.fieldList.setEnabled(value);
         this.fieldList.setVisible(value);
-        this.fieldScrollPane.setEnabled(value);
         this.fieldScrollPane.setVisible(value);
     }
 

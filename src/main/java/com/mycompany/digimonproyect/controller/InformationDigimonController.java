@@ -6,7 +6,10 @@ package com.mycompany.digimonproyect.controller;
 
 import com.mycompany.digimonproyect.model.digimon.Digimon;
 import com.mycompany.digimonproyect.model.digimon.*;
+import com.mycompany.digimonproyect.view.DigimonEvolutionJDialog;
 import com.mycompany.digimonproyect.view.InformationDigimonDialog;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -23,7 +26,32 @@ public class InformationDigimonController {
         this.view = view;
         this.digimon = digimon;
         this.initComponents();
+        this.view.setCancelButtonListener(this.setCancelButtonActionListener());
+        this.view.setShowEvolutionsButtoonListener(this.setEvolutionsButtonActionListener());
+        
     }
+    
+    private ActionListener setCancelButtonActionListener(){
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                view.dispose();
+            }
+        };
+        return al;
+    }
+    private ActionListener setEvolutionsButtonActionListener(){
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DigimonEvolutionJDialog  ded = new DigimonEvolutionJDialog(view,true);
+                DigimonEvolutionController dec = new DigimonEvolutionController(ded, digimon);
+                ded.setVisible(true);
+            }
+        };
+        return al;
+    }
+    
     private void initComponents() throws IOException {
         this.view.createPanel(view.getDigimonPanel(), digimon.getImages().get(0).getHref());
         this.view.configurateTextArea(view.getDescriptionScrollPane(), view.getDescriptionTextArea());
@@ -33,6 +61,13 @@ public class InformationDigimonController {
         this.view.setJListModel(addTypesToList(), digimon, view.getTypesList(), view.getTypeScrollPane());
         this.view.setJListModel(addLevelsToList(), digimon, view.getLevelsList(), view.getLevelsScrollPane());
         this.view.setDescriptioAreaText(digimon.getDescriptions().get(1).getDescription());
+        this.view.setDigimonLabel(digimon.getName());
+        if(digimon.isxAntibody()){
+            this.view.setXAntiBodyLabel("XAntiBody: yes");
+        }else{
+            this.view.setXAntiBodyLabel("XAntiBody: no"); 
+        }
+        this.view.setCreateLabel("Fue creado en " +digimon.getReleaseDate());
     }
     private DefaultListModel<String> addFieldToList() throws IOException {
         DefaultListModel<String> model = new DefaultListModel<>();

@@ -8,12 +8,14 @@ import com.mycompany.digimonproyect.model.digimon.Digimon;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -63,7 +65,7 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
         fieldLabel = new javax.swing.JLabel();
         fieldScrollPane = new javax.swing.JScrollPane();
         fieldsList = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
         evolutionButton = new javax.swing.JButton();
         levelsLabel = new javax.swing.JLabel();
         levelsScrollPane = new javax.swing.JScrollPane();
@@ -114,7 +116,7 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
 
         fieldScrollPane.setViewportView(fieldsList);
 
-        jButton1.setText("Cancel");
+        cancelButton.setText("Cancel");
 
         evolutionButton.setText("Show evolution chain...");
 
@@ -146,14 +148,9 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
                             .addComponent(attributesLabel))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(27, 27, 27)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(digimonLabel)
-                                            .addComponent(xAntiBodyLabel)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(levelsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(attributesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,19 +165,26 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
                                             .addComponent(skillScrollPane)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(7, 7, 7)
-                                                .addComponent(typeScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)))))
-                                .addContainerGap())
+                                                .addComponent(typeScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(fieldScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(fieldScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(369, 369, 369)
+                                        .addComponent(digimonLabel))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(xAntiBodyLabel)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(createLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(evolutionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(jButton1)
-                        .addContainerGap())))
+                        .addComponent(cancelButton)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,11 +192,13 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(digimonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(digimonLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(xAntiBodyLabel))
-                    .addComponent(digimonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                        .addComponent(xAntiBodyLabel)
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(descriptionLabel)
                     .addComponent(descriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
@@ -215,7 +221,7 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createLabel)
                     .addComponent(evolutionButton)
-                    .addComponent(jButton1))
+                    .addComponent(cancelButton))
                 .addGap(61, 61, 61))
         );
 
@@ -297,6 +303,13 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
             list.setModel(model);
         }
     }
+    
+    public void setCancelButtonListener(ActionListener al){
+        this.cancelButton.addActionListener(al);
+    }
+    public void setShowEvolutionsButtoonListener(ActionListener al){
+        this.evolutionButton.addActionListener(al);
+    }
 
     public JList<String> getAttributesList() {
         return attributesList;
@@ -334,7 +347,12 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
     public JTextArea getDescriptionTextArea() {
         return descriptionTextArea;
     }
+
+    public void setCreateLabel(String value) {
+        this.createLabel.setText(value);
+    }
     
+
     public void configurateTextArea(JScrollPane pane, JTextArea textArea){
         pane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         textArea.setLineWrap(true);
@@ -346,6 +364,7 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
     private javax.swing.JLabel attributesLabel;
     private javax.swing.JList<String> attributesList;
     private javax.swing.JScrollPane attributesScrollPane;
+    private javax.swing.JButton cancelButton;
     private javax.swing.JLabel createLabel;
     private javax.swing.JLabel descriptionLabel;
     private javax.swing.JScrollPane descriptionScrollPane;
@@ -356,7 +375,6 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
     private javax.swing.JLabel fieldLabel;
     private javax.swing.JScrollPane fieldScrollPane;
     private javax.swing.JList<String> fieldsList;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel levelsLabel;
     private javax.swing.JList<String> levelsList;
