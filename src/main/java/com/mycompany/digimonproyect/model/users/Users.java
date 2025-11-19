@@ -24,7 +24,7 @@ public class Users implements Serializable {
         File file = new File("users.ser");
         file.createNewFile();
         users = new ArrayList();
-        currentUser = new User("","");
+        currentUser = null;
         
     }
 
