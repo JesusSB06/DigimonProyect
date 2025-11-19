@@ -39,6 +39,7 @@ public class DigimonJDialogController {
         this.view.setSearchButtonActionListener(this.setSearchButtonActionListener());
         this.view.setAddToListButtonActionListener(this.setAddToListButtonActionListener());
         this.view.setShowInfoButtonListener(this.setShowInfoButtonActionListener());
+        this.view.setCancelButtonActionListener(this.setCancelButtonActionListener());
     }
     
     public DigimonJDialogController(DigimonJDialog view, Users userModel, Digimon digimon) throws IOException {
@@ -51,7 +52,7 @@ public class DigimonJDialogController {
         this.view.setShowInfoButtonListener(this.setShowInfoButtonActionListener());
     }
     private void initComponents() throws IOException{
-        this.view.createPanel(this.view.getLogoPanel(),"src/main/resources/img/digidex.jpeg");
+        this.view.createPanel(this.view.getLogoPanel(),"src/main/resources/img/digidex.png");
         this.view.enableFieldComponents(false);
         if(userModel.getCurrentUser() == null){
             this.view.enableAddToListBUtton(false);

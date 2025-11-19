@@ -46,8 +46,12 @@ public class User implements Serializable{
         }
     }
     
+    public void changeDigimonNickname(int n,String s){
+        digimon.get(n).setNickname(s);
+    }
     public void setDigimon(ArrayList<Digimon> digimon) {
         this.digimon = digimon;
     }
+    
     
 }
