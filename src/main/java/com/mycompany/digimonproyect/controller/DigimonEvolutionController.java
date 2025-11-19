@@ -55,8 +55,6 @@ public class DigimonEvolutionController {
             } catch (IOException ex) {
                 Logger.getLogger(PersonalListController.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            row.add(true);
             view.addRowTable(row, table);
         }
             

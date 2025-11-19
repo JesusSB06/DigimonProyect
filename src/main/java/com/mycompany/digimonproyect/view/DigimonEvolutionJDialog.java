@@ -80,8 +80,8 @@ public class DigimonEvolutionJDialog extends javax.swing.JDialog {
         nextEvolutionsPanelLayout.setVerticalGroup(
             nextEvolutionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(nextEvolutionsPanelLayout.createSequentialGroup()
-                .addComponent(nextEvolutionsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 66, Short.MAX_VALUE))
+                .addComponent(nextEvolutionsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 40, Short.MAX_VALUE))
         );
 
         evolutionTabbedPane.addTab("Next Evolutions", nextEvolutionsPanel);
@@ -143,36 +143,38 @@ public class DigimonEvolutionJDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addRowTable(Vector row,JTable table) {
+    public void addRowTable(Vector row, JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.addRow(row);
     }
+
     private void addTableRenderer(JTable table) {
-        table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer() {
+        table.setRowHeight(80);
+
+        // Renderer de imágenes
+        table.getColumnModel().getColumn(2).setCellRenderer(new TableCellRenderer() {
             @Override
-            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                    boolean isSelected, boolean hasFocus, int row, int column) {
+
                 JLabel label = new JLabel();
                 label.setHorizontalAlignment(JLabel.CENTER);
 
                 if (value instanceof ImageIcon) {
                     label.setIcon((ImageIcon) value);
-                    label.setText("");
                 } else {
-                    label.setIcon(null);
                     label.setText(value != null ? value.toString() : "");
                 }
-
-                label.setOpaque(true);
-                label.setBackground(isSelected ? table.getSelectionBackground() : table.getBackground());
-                label.setForeground(isSelected ? table.getSelectionForeground() : table.getForeground());
 
                 return label;
             }
         });
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        table.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
-        table.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
+
+
+        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+        center.setHorizontalAlignment(JLabel.CENTER);
+        table.getColumnModel().getColumn(0).setCellRenderer(center);
+        table.getColumnModel().getColumn(1).setCellRenderer(center);
     }
     public void clearTable(JTable table) {
         DefaultTableModel model=(DefaultTableModel) table.getModel();
