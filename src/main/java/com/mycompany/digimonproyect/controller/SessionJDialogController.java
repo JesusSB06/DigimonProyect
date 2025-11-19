@@ -29,50 +29,70 @@ public class SessionJDialogController {
     }
 
     private void verifyLogIn() throws IOException, ClassNotFoundException {
-        File file = new File ("users.ser");
+        File file = new File("users.ser");
         String username = view.getUsername().trim();
         String password = view.getPassword().toString().trim();
-        User u = new User(username, password);
-            for (User us : model.deserializedList()) {
-                if (username.equals(us.getName().trim())) {
-                    if (password.equals(us.getPassword().trim())) {
-                        model.setCurrentUser(model.getUser(username));
-                        JOptionPane.showMessageDialog(view, "User loged in correctly");
-                        view.dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(view, "Incorrect password");
-                    }
+        //User u = new User(username, password);
+        int state = 3;
+        for (User us : model.deserializedList()) {
+            if (username.equals(us.getName().trim())) {
+                if (password.equals(us.getPassword().trim())) {
+                    model.setCurrentUser(model.getUser(username));
+                    state = 1;
                 } else {
-                    JOptionPane.showMessageDialog(view, "Username not found.");
-                    clearView();
-                }System.out.println(model.getCurrentUser().getName());
-            }
-    }
-    private void verifySingUp() throws IOException, ClassNotFoundException {
-        File file = new File ("users.ser");
-        String username = view.getUsername().trim();
-        String password = view.getPassword().toString().trim();
-        User u = new User(username, password);
-        if (file.length()<1) {
-            model.addUser(u);
-            JOptionPane.showMessageDialog(view, "User singed up successfully, log in to get into the aplication");
-            clearView();
-        }else{
-            for (User us : model.deserializedList()) {
-                if (username.equals(us.getName().trim())) {
-                    
-                        JOptionPane.showMessageDialog(view, "Username already exists");
-                    
-                } else {
-                    model.addUser(u);
-                    JOptionPane.showMessageDialog(view, "User singed up successfully, log in to get into the aplication");
-                    clearView();
+                    state = 2;
                 }
             }
         }
+        switch (state) {
+            case 1:
+                JOptionPane.showMessageDialog(view, "User loged in correctly");
+                view.dispose();
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(view, "Incorrect password");
+                break;
+            case 3:
+                JOptionPane.showMessageDialog(view, "Username not found.");
+                clearView();
+                break;
+        }
     }
-    
-    private void clearView(){
+
+    private void verifySingUp() throws IOException, ClassNotFoundException {
+        File file = new File("users.ser");
+        String username = view.getUsername().trim();
+        String password = view.getPassword().toString().trim();
+        User u = new User(username, password);
+        int state = 3;
+        if (file.length() < 1) {
+            model.addUser(u);
+            state = 1;
+        } else {
+            for (User us : model.deserializedList()) {
+                if (username.equals(us.getName().trim())) {
+                    state = 2;
+                } else {
+                    model.addUser(u);
+                }
+            }
+        }
+        switch (state) {
+            case 1:
+                JOptionPane.showMessageDialog(view, "User singed up successfully, log in to get into the aplication");
+                clearView();
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(view, "Username already exists");
+                break;
+            case 3:
+                JOptionPane.showMessageDialog(view, "User singed up successfully, log in to get into the aplication");
+                clearView();
+                break;
+        }
+    }
+
+    private void clearView() {
         view.setPassword("");
         view.setUsername("");
     }
@@ -94,16 +114,16 @@ public class SessionJDialogController {
             return false;
         }
     }
-    
-    private void manageLogInButton() throws IOException, ClassNotFoundException{
-        File file = new File ("users.ser");
-        if (file.length()<1) {
+
+    private void manageLogInButton() throws IOException, ClassNotFoundException {
+        File file = new File("users.ser");
+        if (file.length() < 1) {
             view.enableDisableLogInButton(false);
-        }else{
+        } else {
             view.enableDisableLogInButton(true);
         }
     }
-    
+
     public ActionListener getLogInButtonActionListener() {
         ActionListener al = new ActionListener() {
             @Override
@@ -112,9 +132,9 @@ public class SessionJDialogController {
                     JOptionPane.showMessageDialog(view, "Introduce an user");
                 }
                 if (passwordTextFieldEmpty()) {
-
                     JOptionPane.showMessageDialog(view, "Introduce a password");
-                }if(!usernameTextFieldEmpty() && !passwordTextFieldEmpty()){
+                }
+                if (!usernameTextFieldEmpty() && !passwordTextFieldEmpty()) {
                     try {
                         verifyLogIn();
                     } catch (IOException ex) {
@@ -122,7 +142,6 @@ public class SessionJDialogController {
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
                 }
                 try {
                     manageLogInButton();
@@ -132,9 +151,8 @@ public class SessionJDialogController {
                     Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         };
-        
         return al;
     }
 
@@ -144,11 +162,13 @@ public class SessionJDialogController {
             public void actionPerformed(ActionEvent ae) {
                 if (usernameTextFieldEmpty()) {
                     JOptionPane.showMessageDialog(view, "Introduce an user");
-                }if (passwordTextFieldEmpty()) {
+                }
+                if (passwordTextFieldEmpty()) {
                     JOptionPane.showMessageDialog(view, "Introduce a password");
-                }if(!usernameTextFieldEmpty() && !passwordTextFieldEmpty()){
+                }
+                if (!usernameTextFieldEmpty() && !passwordTextFieldEmpty()) {
                     try {
-                    verifySingUp();
+                        verifySingUp();
                     } catch (IOException ex) {
                         Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
@@ -166,5 +186,4 @@ public class SessionJDialogController {
         };
         return al;
     }
-
 }

@@ -37,9 +37,8 @@ public class DigimonJDialog extends javax.swing.JDialog {
      */
     public DigimonJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();   
+        initComponents();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,24 +50,23 @@ public class DigimonJDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         backgroundPanel = new javax.swing.JPanel();
-        addToListButton = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         searchTextField = new javax.swing.JTextField();
         serachLabel = new javax.swing.JLabel();
         logoPanel = new javax.swing.JPanel();
         digimonPanel = new javax.swing.JPanel();
-        showInfoButton = new javax.swing.JButton();
         factionsLabel = new javax.swing.JLabel();
         fieldScrollPane = new javax.swing.JScrollPane();
         fieldList = new javax.swing.JList<>();
         cancelButton = new javax.swing.JButton();
+        showInformationButton = new javax.swing.JButton();
+        addToListButton = new javax.swing.JButton();
+        userLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         backgroundPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        addToListButton.setText("Añadir a lista");
 
         searchButton.setText("Buscar");
 
@@ -102,24 +100,24 @@ public class DigimonJDialog extends javax.swing.JDialog {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        showInfoButton.setText("Mostrar información...");
-        showInfoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showInfoButtonActionPerformed(evt);
-            }
-        });
-
-        factionsLabel.setText("Facciones");
+        factionsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        factionsLabel.setText("Fields");
 
         fieldScrollPane.setViewportView(fieldList);
 
         cancelButton.setText("Cancelar");
 
+        showInformationButton.setText("Show information...");
+
+        addToListButton.setText("Add to list");
+
+        userLabel.setText("");
+
         javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
         backgroundPanel.setLayout(backgroundPanelLayout);
         backgroundPanelLayout.setHorizontalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
+            .addGroup(backgroundPanelLayout.createSequentialGroup()
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(logoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
@@ -131,48 +129,48 @@ public class DigimonJDialog extends javax.swing.JDialog {
                                 .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(searchButton)
-                                .addGap(0, 16, Short.MAX_VALUE))
+                                .addGap(26, 32, Short.MAX_VALUE)
+                                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(backgroundPanelLayout.createSequentialGroup()
+                                        .addGap(126, 126, 126)
+                                        .addComponent(cancelButton))
+                                    .addComponent(fieldScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(factionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(backgroundPanelLayout.createSequentialGroup()
                                 .addComponent(digimonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(15, 15, 15)))
-                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(backgroundPanelLayout.createSequentialGroup()
-                                .addGap(86, 86, 86)
-                                .addComponent(factionsLabel))
-                            .addGroup(backgroundPanelLayout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(showInfoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(backgroundPanelLayout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(fieldScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
-                                .addComponent(addToListButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cancelButton)))))
+                                .addGap(42, 42, 42)
+                                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(addToListButton)
+                                    .addComponent(showInformationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(15, 15, 15))
+            .addGroup(backgroundPanelLayout.createSequentialGroup()
+                .addComponent(userLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(userLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(backgroundPanelLayout.createSequentialGroup()
+                        .addComponent(factionsLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(showInformationButton))
+                    .addComponent(digimonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(digimonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(factionsLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(fieldScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(showInfoButton)))
-                .addGap(18, 18, 18)
-                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(serachLabel)
-                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton)
                     .addComponent(addToListButton)
-                    .addComponent(cancelButton))
+                    .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(serachLabel)
+                        .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchButton)
+                        .addComponent(cancelButton)))
                 .addGap(6, 6, 6))
         );
 
@@ -180,10 +178,9 @@ public class DigimonJDialog extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,10 +189,6 @@ public class DigimonJDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void showInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showInfoButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_showInfoButtonActionPerformed
 
     private void setImageLogoPanel(Image image, JPanel panel) {
         panel.removeAll();
@@ -218,10 +211,12 @@ public class DigimonJDialog extends javax.swing.JDialog {
         panel.revalidate();
         panel.repaint();
     }
+
     public void createPanel(JPanel panel, String route) throws MalformedURLException, IOException {
         Image image = getImage(route);
         setImageLogoPanel(image, panel);
     }
+
     public Image getImage(String route) throws IOException {
         Image image = null;
         if (route.contains("https://")) {
@@ -232,30 +227,45 @@ public class DigimonJDialog extends javax.swing.JDialog {
         }
         return image;
     }
-    public JPanel getLogoPanel(){
+
+    public JPanel getLogoPanel() {
         return this.logoPanel;
     }
-    public JPanel getDigimonPanel(){
+
+    public JPanel getDigimonPanel() {
         return this.digimonPanel;
-    }  
-    public String getSearchTextField(){
+    }
+
+    public void setUserLabel(String value) {
+        this.userLabel.setText(value);
+    }
+    
+    public String getSearchTextField() {
         return this.searchTextField.getText().trim();
     }
 
-    
     public void setSearchButtonActionListener(ActionListener al) {
         this.searchButton.addActionListener(al);
     }
-    public void setCancelButtonActionListener(ActionListener al){
+
+    public void setCancelButtonActionListener(ActionListener al) {
         this.cancelButton.addActionListener(al);
     }
+
     public void setAddToListButtonActionListener(ActionListener al) {
         this.addToListButton.addActionListener(al);
     }
 
-    public void enableAddToListButton(Boolean value) {
-        this.addToListButton.setEnabled(true);
+    public void setShowInfoButtonListener(ActionListener al) {
+    this.showInformationButton.addActionListener(al);
     }
+
+    public void enableFieldComponents(boolean value) {
+        this.factionsLabel.setVisible(value);
+        this.fieldList.setVisible(value);
+        this.fieldScrollPane.setVisible(value);
+    }
+
     public void setJListModel(DefaultListModel<String> model, Digimon digimon) {
         if (this.fieldList == null) {
             this.fieldList = new JList<String>(model);
@@ -264,7 +274,13 @@ public class DigimonJDialog extends javax.swing.JDialog {
             this.fieldList.setModel(model);
         }
     }
-  
+    
+    public void enableAddToListBUtton(boolean value){
+        this.addToListButton.setEnabled(value);
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToListButton;
     private javax.swing.JPanel backgroundPanel;
@@ -277,7 +293,8 @@ public class DigimonJDialog extends javax.swing.JDialog {
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JLabel serachLabel;
-    private javax.swing.JButton showInfoButton;
+    private javax.swing.JButton showInformationButton;
+    private javax.swing.JLabel userLabel;
     // End of variables declaration//GEN-END:variables
 
 

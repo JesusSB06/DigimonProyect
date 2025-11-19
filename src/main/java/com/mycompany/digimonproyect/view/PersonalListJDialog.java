@@ -44,9 +44,11 @@ public class PersonalListJDialog extends javax.swing.JDialog {
         digimonScrollPane = new javax.swing.JScrollPane();
         digimonTable = new javax.swing.JTable();
         titleLabel = new javax.swing.JLabel();
-        nicknameButton = new javax.swing.JButton();
+        modifyButton = new javax.swing.JButton();
         showButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        createButton = new javax.swing.JButton();
+        cloneButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -74,17 +76,20 @@ public class PersonalListJDialog extends javax.swing.JDialog {
             }
         });
         digimonTable.setRowHeight(80);
-        digimonTable.setRowSelectionAllowed(false);
         digimonTable.getTableHeader().setReorderingAllowed(false);
         digimonScrollPane.setViewportView(digimonTable);
 
         titleLabel.setText("Personal List");
 
-        nicknameButton.setText("Change Nickname..");
+        modifyButton.setText("Modify...");
 
         showButton.setText("Show Info..");
 
         deleteButton.setText("Delete");
+
+        createButton.setText("Create");
+
+        cloneButton.setText("Clone");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,13 +104,17 @@ public class PersonalListJDialog extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 47, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(deleteButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nicknameButton)
+                                .addComponent(cloneButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(createButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(modifyButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(showButton))
-                            .addComponent(digimonScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(digimonScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -114,12 +123,14 @@ public class PersonalListJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(titleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(digimonScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(digimonScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nicknameButton)
+                    .addComponent(modifyButton)
                     .addComponent(deleteButton)
-                    .addComponent(showButton))
+                    .addComponent(showButton)
+                    .addComponent(createButton)
+                    .addComponent(cloneButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -129,19 +140,25 @@ public class PersonalListJDialog extends javax.swing.JDialog {
     public void setDeleteButtonActionListener(ActionListener al){
         this.deleteButton.addActionListener(al);
     }
-    public void setNicknameButtonActionListener(ActionListener al){
-        this.nicknameButton.addActionListener(al);
+    public void setModifyButtonActionListener(ActionListener al){
+        this.modifyButton.addActionListener(al);
     }
     public void setShowButtonActionListener(ActionListener al){
         this.showButton.addActionListener(al);
     }
+    public void setCreateButtonActionListener(ActionListener al){
+        this.createButton.addActionListener(al);
+    }
+    public void setCloneButtonActionListener(ActionListener al){
+        this.cloneButton.addActionListener(al);
+    }
     public void setTitleLabel(String s){
         this.titleLabel.setText(s);
     }
-    public String getSelection(){
-        return this.digimonTable.getValueAt(this.digimonTable.getSelectedRow(), 2).toString();
+    public int getSelectionColumn(){
+        return this.digimonTable.getSelectedColumn();
     }
-    public int getSelectionInt(){
+    public int getSelectionRow(){
         return this.digimonTable.getSelectedRow();
     }
 
@@ -189,10 +206,12 @@ public class PersonalListJDialog extends javax.swing.JDialog {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cloneButton;
+    private javax.swing.JButton createButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JScrollPane digimonScrollPane;
     private javax.swing.JTable digimonTable;
-    private javax.swing.JButton nicknameButton;
+    private javax.swing.JButton modifyButton;
     private javax.swing.JButton showButton;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables

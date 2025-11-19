@@ -2,6 +2,7 @@ package com.mycompany.digimonproyect.controller;
 
 import com.mycompany.digimonproyect.model.digimon.Digimon;
 import com.mycompany.digimonproyect.model.users.Users;
+import com.mycompany.digimonproyect.service.ApiConnection;
 import com.mycompany.digimonproyect.view.PersonalListJDialog;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -28,7 +29,7 @@ public class PersonalListController {
         this.view = view;
         this.model = model;
         this.view.setDeleteButtonActionListener(this.getDeleteButtonActionListener());
-        this.view.setNicknameButtonActionListener(this.getNicknameButtonActionListener());
+        this.view.setModifyButtonActionListener(this.getModifyButtonActionListener());
         this.view.setShowButtonActionListener(this.getShowButtonActionListener());
         this.view.setTitleLabel(getPageTitle());
          updateTable();
@@ -58,7 +59,8 @@ public class PersonalListController {
             }
             row.add(d.getNickname());
             row.add(d.getName());
-            row.add(true);
+            row.add(d.isxAntibody());
+            
             view.addRowTable(row);
         }
             
@@ -67,22 +69,65 @@ public class PersonalListController {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                model.getCurrentUser().delDigimon(view.getSelectionInt());
+                model.getCurrentUser().delDigimon(view.getSelectionRow());
                 updateTable();
+                try {
+                    model.serializeList();
+                } catch (IOException ex) {
+                    Logger.getLogger(PersonalListController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         };
         return al;
     }
-    private ActionListener getNicknameButtonActionListener(){
+    private ActionListener getModifyButtonActionListener(){
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if (view.getSelectionInt()!=-1) {
-                    String nickname = JOptionPane.showInputDialog(view, "Write the nickname for your digimon:");
-                    model.getCurrentUser().changeDigimonNickname(view.getSelectionInt(), nickname);
-                    updateTable();
+                int selectionRow = view.getSelectionRow();
+                if (selectionRow!=-1) {
+                    int selectionColumn = view.getSelectionColumn();
+                    switch (selectionColumn) {
+                        case 0:
+                            String icon = JOptionPane.showInputDialog(view, "Write the name of the digimon u want the icon from:");
+                            boolean exists = ApiConnection.JsonToDigimon(icon)!=null;
+                            if (exists) {
+                                model.getCurrentUser().getDigimon().get(selectionRow).setImages(ApiConnection.JsonToDigimon(icon).getImages());
+                            } else {
+                                JOptionPane.showMessageDialog(view, "Digimon not found");
+                            }
+                            break;
+                        case 1:
+                            String nickname = JOptionPane.showInputDialog(view, "Write the nickname for your digimon:");
+                            model.getCurrentUser().getDigimon().get(selectionRow).setNickname(nickname);
+                            break;
+                        case 2:
+                            String name = JOptionPane.showInputDialog(view, "Write the new name for your digimon:");
+                            model.getCurrentUser().getDigimon().get(selectionRow).setName(name);
+                            break;
+                        case 3:
+                            int virus = JOptionPane.showConfirmDialog(view, "Does this digimon have xAntibody?");
+                            switch (virus) {
+                                case 0:
+                                    model.getCurrentUser().getDigimon().get(selectionRow).setxAntibody(true);
+                                    break;
+                                case 1:
+                                    model.getCurrentUser().getDigimon().get(selectionRow).setxAntibody(false);
+                                    break;
+                                case 2:
+                                    break;
+                            }
+                            break;
+                    }
+
                 } else {
-                    JOptionPane.showMessageDialog(view, "Please, select a digimon in the list to change the nickname to");
+                    JOptionPane.showMessageDialog(view, "Please, select a cell to modify");
+                }
+                updateTable();
+                try {
+                    model.serializeList();
+                } catch (IOException ex) {
+                    Logger.getLogger(PersonalListController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };
@@ -92,7 +137,7 @@ public class PersonalListController {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                JOptionPane.showMessageDialog(view, view.getSelection());
+                
             }
         };
         return al;
