@@ -1,8 +1,21 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ */
 package com.mycompany.digimonproyect.view;
 
+import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.util.Vector;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.ListCellRenderer;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 /**
  *
@@ -16,6 +29,7 @@ public class PersonalListJDialog extends javax.swing.JDialog {
     public PersonalListJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        addTableRenderer();
     }
 
     /**
@@ -59,6 +73,9 @@ public class PersonalListJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        digimonTable.setRowHeight(80);
+        digimonTable.setRowSelectionAllowed(false);
+        digimonTable.getTableHeader().setReorderingAllowed(false);
         digimonScrollPane.setViewportView(digimonTable);
 
         titleLabel.setText("Personal List");
@@ -127,9 +144,38 @@ public class PersonalListJDialog extends javax.swing.JDialog {
     public int getSelectionInt(){
         return this.digimonTable.getSelectedRow();
     }
+
     public void addRowTable(Vector row) {
         DefaultTableModel model = (DefaultTableModel) this.digimonTable.getModel();
         model.addRow(row);
+    }
+
+    private void addTableRenderer() {
+        digimonTable.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                JLabel label = new JLabel();
+                label.setHorizontalAlignment(JLabel.CENTER);
+
+                if (value instanceof ImageIcon) {
+                    label.setIcon((ImageIcon) value);
+                    label.setText("");
+                } else {
+                    label.setIcon(null);
+                    label.setText(value != null ? value.toString() : "");
+                }
+
+                label.setOpaque(true);
+                label.setBackground(isSelected ? table.getSelectionBackground() : table.getBackground());
+                label.setForeground(isSelected ? table.getSelectionForeground() : table.getForeground());
+
+                return label;
+            }
+        });
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        digimonTable.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
+        digimonTable.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
     }
     public void clearTable() {
         DefaultTableModel model=(DefaultTableModel) this.digimonTable.getModel();
@@ -138,6 +184,9 @@ public class PersonalListJDialog extends javax.swing.JDialog {
         digimonTable.revalidate();
         digimonTable.repaint();
     }
+    
+
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteButton;

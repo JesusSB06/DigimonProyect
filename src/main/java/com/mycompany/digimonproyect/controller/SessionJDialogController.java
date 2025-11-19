@@ -132,8 +132,9 @@ public class SessionJDialogController {
                     Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            
         };
-
+        
         return al;
     }
 

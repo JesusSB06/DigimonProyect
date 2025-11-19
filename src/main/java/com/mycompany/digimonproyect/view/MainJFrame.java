@@ -44,7 +44,6 @@ public class MainJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         logoPanel.setBackground(new java.awt.Color(255, 255, 255));
-        logoPanel.setForeground(new java.awt.Color(242, 242, 242));
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -79,7 +78,7 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(logoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,20 +88,23 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addQuitMenuItemActionListener(ActionListener al){
+    public void addQuitMenuItemActionListener(ActionListener al) {
         this.quitMenuItem.addActionListener(al);
     }
-    public void addPersonalListMenuItemActionListener(ActionListener al){
+
+    public void addPersonalListMenuItemActionListener(ActionListener al) {
         this.personalListMenuItem.addActionListener(al);
     }
-    public void addDigimonMenuItemActionListener(ActionListener al){
+
+    public void addDigimonMenuItemActionListener(ActionListener al) {
         this.digimonMenuItem.addActionListener(al);
     }
-    public void addSessionMenuItemActionListener(ActionListener al){
+
+    public void addSessionMenuItemActionListener(ActionListener al) {
         this.sessionMenuItem.addActionListener(al);
     }
-    public void setImageLogoPanel(Image img) {
 
+    public void setImageLogoPanel(Image img) {
 
         JPanel panelWithImage = new JPanel() {
             @Override
@@ -123,11 +125,11 @@ public class MainJFrame extends javax.swing.JFrame {
         logoPanel.revalidate();
         logoPanel.repaint();
     }
-    public void setBackgroundImage(){
-        Image image1 = new ImageIcon("src/main/resources/digidex.png").getImage();
+
+    public void setBackgroundImage() {
+        Image image1 = new ImageIcon("src/main/resources/img/digidex.png").getImage();
         setImageLogoPanel(image1);
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem digimonMenuItem;
     private javax.swing.JPanel logoPanel;

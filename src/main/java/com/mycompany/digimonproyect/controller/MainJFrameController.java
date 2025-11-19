@@ -1,7 +1,7 @@
 package com.mycompany.digimonproyect.controller;
 
-import com.mycompany.digimonproyect.model.Digimons;
 import com.mycompany.digimonproyect.model.users.Users;
+import com.mycompany.digimonproyect.view.DigimonJDialog;
 import com.mycompany.digimonproyect.view.MainJFrame;
 import com.mycompany.digimonproyect.view.PersonalListJDialog;
 import com.mycompany.digimonproyect.view.SessionJDialog;
@@ -16,12 +16,11 @@ public class MainJFrameController {
 
     private MainJFrame view;
     private Users userModel;
-    private Digimons digimonModel;
 
-    public MainJFrameController(MainJFrame view, Users userModel, Digimons digimonModel) {
+
+    public MainJFrameController(MainJFrame view, Users userModel) {
         this.view = view;
         this.userModel = userModel;
-        this.digimonModel = digimonModel;
         this.view.setBackgroundImage();
         this.view.addQuitMenuItemActionListener(getQuitMenuActionListener());
         this.view.addDigimonMenuItemActionListener(getDigimonMenuActionListener());
@@ -46,9 +45,9 @@ public class MainJFrameController {
                 if (userModel.getCurrentUser() == null) {
                     JOptionPane.showMessageDialog(view, "Log in to manage the list");
                 } else{
-                    if (userModel.getCurrentUser().getDigimon() == null) {
+                    if (userModel.getCurrentUser().getDigimon()==null) {
                         JOptionPane.showMessageDialog(view, "Your digimon list is empty, introduce a digimon to manage the list");
-                    }else {
+                    }else {                       
                         PersonalListJDialog pld = new PersonalListJDialog(view, true);
                         PersonalListController plc = new PersonalListController(pld, userModel);
                         pld.setVisible(true);  
@@ -80,11 +79,23 @@ public class MainJFrameController {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
+                if (userModel.getCurrentUser() == null) {
+                    JOptionPane.showMessageDialog(view, "Advice: you don´t have any user");
+                }
+                DigimonJDialog dd = new DigimonJDialog(view, true);
+                try {
+                    DigimonJDialogController ddc = new DigimonJDialogController(dd, userModel);
+                    dd.setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainJFrameController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+
         };
         return al;
     }
+    
+
     
     
 }
