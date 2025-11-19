@@ -9,6 +9,7 @@ import com.mycompany.digimonproyect.model.digimon.Field;
 import com.mycompany.digimonproyect.model.users.Users;
 import com.mycompany.digimonproyect.service.ApiConnection;
 import com.mycompany.digimonproyect.view.DigimonJDialog;
+import com.mycompany.digimonproyect.view.InformationDigimonDialog;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,21 +35,28 @@ public class DigimonJDialogController {
         this.view = view;
         this.userModel = userModel;
         this.digimon = null;
-        this.isCurrentUser();
+        this.initComponents();
         this.view.createPanel(this.view.getLogoPanel(),"src/main/resources/img/digimon.jpeg");
         this.view.setSearchButtonActionListener(this.setSearchButtonActionListener());
         this.view.setAddToListButtonActionListener(this.setAddToListButtonActionListener());
+        this.view.setShowInfoButtonListener(this.setShowInfoButtonActionListener());
     }
     
     public DigimonJDialogController(DigimonJDialog view, Users userModel, Digimon digimon) throws IOException {
         this.view = view;
         this.userModel = userModel;
         this.digimon = digimon;
-        this.isCurrentUser();
-        this.view.createPanel(this.view.getLogoPanel(),"src/main/resources/img/digimon.jpeg");
+        this.initComponents();
         this.view.setSearchButtonActionListener(this.setSearchButtonActionListener());
         this.view.setCancelButtonActionListener(this.setCancelButtonActionListener());
+        this.view.setShowInfoButtonListener(this.setShowInfoButtonActionListener());
     }
+    private void initComponents() throws IOException{
+        this.view.createPanel(this.view.getLogoPanel(),"src/main/resources/img/digidex.jpeg");
+        this.view.enableFieldComponents(false);
+
+    }
+    
 
     private ActionListener setSearchButtonActionListener() {
         ActionListener al = new ActionListener() {
@@ -56,8 +64,8 @@ public class DigimonJDialogController {
             public void actionPerformed(ActionEvent ae) {
                 setDigimon(ApiConnection.JsonToDigimon(view.getSearchTextField()));
                 try {
-                    // Verificar que el digimon tenga imágenes
                     if (digimon != null && digimon.getImages() != null && !digimon.getImages().isEmpty()) {
+                        view.enableFieldComponents(true);
                         view.createPanel(view.getDigimonPanel(), digimon.getImages().get(0).getHref());
                         view.setJListModel(addFieldToList(),digimon);
                     }
@@ -92,6 +100,27 @@ public class DigimonJDialogController {
         };
         return al;
     }
+
+    private ActionListener setShowInfoButtonActionListener() {
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (digimon == null) {
+                    JOptionPane.showMessageDialog(view, "Selecciona un Digimon primero");
+                } else {
+                    InformationDigimonDialog id = new InformationDigimonDialog(view, true);
+                    try {
+                        InformationDigimonController idc = new InformationDigimonController(id, digimon);
+                        id.setVisible(true);
+                    } catch (IOException ex) {
+                        Logger.getLogger(DigimonJDialogController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+            }
+        };
+        return al;
+    }
     
     private ActionListener setCancelButtonActionListener(){
         ActionListener al = new ActionListener() {
@@ -111,11 +140,7 @@ public class DigimonJDialogController {
         this.digimon = digimon;
     }
     
-    private void isCurrentUser(){
-        if(userModel.getCurrentUser() == null){
-            view.enableAddToListButton(Boolean.FALSE);
-        }
-    }
+
     private DefaultListModel<String> addFieldToList() throws IOException {
         DefaultListModel<String> model = new DefaultListModel<>();
         if (digimon != null && digimon.getFields() != null) {
