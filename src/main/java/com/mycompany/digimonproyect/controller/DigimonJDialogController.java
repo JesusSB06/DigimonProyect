@@ -36,7 +36,6 @@ public class DigimonJDialogController {
         this.userModel = userModel;
         this.digimon = null;
         this.initComponents();
-        this.view.createPanel(this.view.getLogoPanel(),"src/main/resources/img/digimon.jpeg");
         this.view.setSearchButtonActionListener(this.setSearchButtonActionListener());
         this.view.setAddToListButtonActionListener(this.setAddToListButtonActionListener());
         this.view.setShowInfoButtonListener(this.setShowInfoButtonActionListener());
@@ -54,6 +53,9 @@ public class DigimonJDialogController {
     private void initComponents() throws IOException{
         this.view.createPanel(this.view.getLogoPanel(),"src/main/resources/img/digidex.jpeg");
         this.view.enableFieldComponents(false);
+        if(userModel.getCurrentUser() == null){
+            this.view.enableAddToListBUtton(false);
+        }
 
     }
     
@@ -62,7 +64,7 @@ public class DigimonJDialogController {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                setDigimon(ApiConnection.JsonToDigimon(view.getSearchTextField()));
+                digimon = ApiConnection.JsonToDigimon(view.getSearchTextField());
                 try {
                     if (digimon != null && digimon.getImages() != null && !digimon.getImages().isEmpty()) {
                         view.enableFieldComponents(true);
@@ -93,9 +95,10 @@ public class DigimonJDialogController {
                 if (digimonList == null) {
                     digimonList = new ArrayList<>();
                     userModel.getCurrentUser().setDigimon(digimonList);
-                }        
-                userModel.getCurrentUser().getDigimon().add(digimon);
-                JOptionPane.showMessageDialog(view, "Se ha añadido el digimon correctamente " + digimon.getName() + " a tu lista");
+                } 
+                Digimon nuevoDigimon = getDigimon();
+                userModel.getCurrentUser().getDigimon().add(nuevoDigimon);
+                JOptionPane.showMessageDialog(view, "Se ha añadido el digimon correctamente " +nuevoDigimon.getName() + " a tu lista");
             }
         };
         return al;

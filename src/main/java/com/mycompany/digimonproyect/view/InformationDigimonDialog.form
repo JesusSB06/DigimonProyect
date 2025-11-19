@@ -35,7 +35,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" pref="449" max="-2" attributes="0"/>
-              <EmptySpace pref="74" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -87,7 +87,7 @@
                                               <Component id="skillScrollPane" max="32767" attributes="0"/>
                                               <Group type="102" attributes="0">
                                                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                                  <Component id="typeScrollPane" pref="419" max="32767" attributes="0"/>
+                                                  <Component id="typeScrollPane" pref="413" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -113,10 +113,17 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="createLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="evolutionButton" min="-2" pref="171" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="createLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="evolutionButton" min="-2" pref="186" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                           <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -140,35 +147,43 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="descriptionLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="descriptionScrollPane" pref="86" max="32767" attributes="0"/>
-                      <Component id="skillLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="skillScrollPane" alignment="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="fieldScrollPane" pref="77" max="32767" attributes="0"/>
-                      <Component id="fieldLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="attributesLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="attributesScrollPane" alignment="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="typeLabel" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="levelsScrollPane" alignment="0" pref="81" max="32767" attributes="0"/>
-                          <Component id="typeScrollPane" alignment="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="descriptionLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="descriptionScrollPane" pref="86" max="32767" attributes="0"/>
+                              <Component id="skillLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="skillScrollPane" alignment="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="fieldScrollPane" pref="77" max="32767" attributes="0"/>
+                              <Component id="fieldLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="attributesLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="attributesScrollPane" alignment="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="typeLabel" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="levelsScrollPane" alignment="0" pref="81" max="32767" attributes="0"/>
+                                  <Component id="typeScrollPane" alignment="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="levelsLabel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="createLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="levelsLabel" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="evolutionButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="createLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="evolutionButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

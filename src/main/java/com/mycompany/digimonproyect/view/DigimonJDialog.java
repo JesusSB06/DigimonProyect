@@ -164,12 +164,13 @@ public class DigimonJDialog extends javax.swing.JDialog {
                         .addComponent(showInformationButton))
                     .addComponent(digimonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(serachLabel)
-                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton)
-                    .addComponent(cancelButton)
-                    .addComponent(addToListButton))
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addToListButton)
+                    .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(serachLabel)
+                        .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchButton)
+                        .addComponent(cancelButton)))
                 .addGap(6, 6, 6))
         );
 
@@ -272,6 +273,10 @@ public class DigimonJDialog extends javax.swing.JDialog {
         } else {
             this.fieldList.setModel(model);
         }
+    }
+    
+    public void enableAddToListBUtton(boolean value){
+        this.addToListButton.setEnabled(value);
     }
     
     

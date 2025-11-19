@@ -79,6 +79,9 @@ public class MainJFrameController {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (userModel.getCurrentUser() == null) {
+                    JOptionPane.showMessageDialog(view, "Advice: you don´t have any user");
+                }
                 DigimonJDialog dd = new DigimonJDialog(view, true);
                 try {
                     DigimonJDialogController ddc = new DigimonJDialogController(dd, userModel);
@@ -87,9 +90,12 @@ public class MainJFrameController {
                     Logger.getLogger(MainJFrameController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+
         };
         return al;
     }
+    
+
     
     
 }
