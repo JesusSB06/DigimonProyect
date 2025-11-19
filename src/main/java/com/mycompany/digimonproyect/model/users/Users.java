@@ -1,5 +1,6 @@
 package com.mycompany.digimonproyect.model.users;
 
+import com.mycompany.digimonproyect.model.digimon.Digimon;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,6 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -18,13 +20,12 @@ public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private ArrayList<User> users;
-    private User currentUser;
+    private User currentUser = new User();
 
     public Users() throws IOException, ClassNotFoundException {
         File file = new File("users.ser");
         file.createNewFile();
         users = new ArrayList();
-        currentUser = null;
         
     }
 
@@ -50,12 +51,14 @@ public class Users implements Serializable {
     }
 
     public void serializeList() throws FileNotFoundException, IOException {
-        
+
         FileOutputStream fos = new FileOutputStream("users.ser");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(users);
+        oos.writeObject(this);
         oos.close();
     }
+    
+    
 
     public ArrayList<User> deserializedList() throws IOException, ClassNotFoundException {
         FileInputStream fis = new FileInputStream("users.ser");

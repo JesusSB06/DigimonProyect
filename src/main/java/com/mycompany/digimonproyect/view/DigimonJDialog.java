@@ -39,6 +39,10 @@ public class DigimonJDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
+    public DigimonJDialog(java.awt.Dialog parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

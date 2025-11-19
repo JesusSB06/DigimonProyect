@@ -5,6 +5,7 @@
 package com.mycompany.digimonproyect.view;
 
 import java.awt.Component;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -48,9 +49,15 @@ public class DigimonEvolutionJDialog extends javax.swing.JDialog {
         nextEvolutionsPanel = new javax.swing.JPanel();
         nextEvolutionsScrollPane = new javax.swing.JScrollPane();
         nextEvolutionsTable = new javax.swing.JTable();
+        cancelButton = new javax.swing.JButton();
+        showInfoNextEvolutionsButton = new javax.swing.JButton();
+        digimonNextEvolutionButton = new javax.swing.JButton();
         priorEvolutionsPanel = new javax.swing.JPanel();
         priorEvolutionsScrollPane = new javax.swing.JScrollPane();
         priorEvolutionsTable = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        showInfoPriorEvolutionsButton = new javax.swing.JButton();
+        digimonPriorEvolutionsButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -71,17 +78,35 @@ public class DigimonEvolutionJDialog extends javax.swing.JDialog {
         ));
         nextEvolutionsScrollPane.setViewportView(nextEvolutionsTable);
 
+        cancelButton.setText("Cancel");
+
+        showInfoNextEvolutionsButton.setText("Show info...");
+
+        digimonNextEvolutionButton.setText("Go to Digimon...");
+
         javax.swing.GroupLayout nextEvolutionsPanelLayout = new javax.swing.GroupLayout(nextEvolutionsPanel);
         nextEvolutionsPanel.setLayout(nextEvolutionsPanelLayout);
         nextEvolutionsPanelLayout.setHorizontalGroup(
             nextEvolutionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(nextEvolutionsScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+            .addComponent(nextEvolutionsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+            .addGroup(nextEvolutionsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(showInfoNextEvolutionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(digimonNextEvolutionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cancelButton))
         );
         nextEvolutionsPanelLayout.setVerticalGroup(
             nextEvolutionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(nextEvolutionsPanelLayout.createSequentialGroup()
-                .addComponent(nextEvolutionsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 66, Short.MAX_VALUE))
+                .addComponent(nextEvolutionsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(nextEvolutionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelButton)
+                    .addComponent(showInfoNextEvolutionsButton)
+                    .addComponent(digimonNextEvolutionButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         evolutionTabbedPane.addTab("Next Evolutions", nextEvolutionsPanel);
@@ -109,17 +134,35 @@ public class DigimonEvolutionJDialog extends javax.swing.JDialog {
         });
         priorEvolutionsScrollPane.setViewportView(priorEvolutionsTable);
 
+        jButton1.setText("Cancel");
+
+        showInfoPriorEvolutionsButton.setText("Show info...");
+
+        digimonPriorEvolutionsButton.setText("Go to Digimon...");
+
         javax.swing.GroupLayout priorEvolutionsPanelLayout = new javax.swing.GroupLayout(priorEvolutionsPanel);
         priorEvolutionsPanel.setLayout(priorEvolutionsPanelLayout);
         priorEvolutionsPanelLayout.setHorizontalGroup(
             priorEvolutionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(priorEvolutionsScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, priorEvolutionsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(showInfoPriorEvolutionsButton)
+                .addGap(18, 18, 18)
+                .addComponent(digimonPriorEvolutionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         priorEvolutionsPanelLayout.setVerticalGroup(
             priorEvolutionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(priorEvolutionsPanelLayout.createSequentialGroup()
-                .addComponent(priorEvolutionsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 66, Short.MAX_VALUE))
+                .addComponent(priorEvolutionsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(priorEvolutionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(showInfoPriorEvolutionsButton)
+                    .addComponent(digimonPriorEvolutionsButton))
+                .addContainerGap())
         );
 
         evolutionTabbedPane.addTab("Prior Evolutions", priorEvolutionsPanel);
@@ -136,43 +179,44 @@ public class DigimonEvolutionJDialog extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(evolutionTabbedPane)
-                .addContainerGap())
+                .addComponent(evolutionTabbedPane))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addRowTable(Vector row,JTable table) {
+    public void addRowTable(Vector row, JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.addRow(row);
     }
+
     private void addTableRenderer(JTable table) {
-        table.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer() {
+        table.setRowHeight(80);
+
+        // Renderer de imágenes
+        table.getColumnModel().getColumn(2).setCellRenderer(new TableCellRenderer() {
             @Override
-            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                    boolean isSelected, boolean hasFocus, int row, int column) {
+
                 JLabel label = new JLabel();
                 label.setHorizontalAlignment(JLabel.CENTER);
 
                 if (value instanceof ImageIcon) {
                     label.setIcon((ImageIcon) value);
-                    label.setText("");
                 } else {
-                    label.setIcon(null);
                     label.setText(value != null ? value.toString() : "");
                 }
-
-                label.setOpaque(true);
-                label.setBackground(isSelected ? table.getSelectionBackground() : table.getBackground());
-                label.setForeground(isSelected ? table.getSelectionForeground() : table.getForeground());
 
                 return label;
             }
         });
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        table.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
-        table.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
+
+
+        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+        center.setHorizontalAlignment(JLabel.CENTER);
+        table.getColumnModel().getColumn(0).setCellRenderer(center);
+        table.getColumnModel().getColumn(1).setCellRenderer(center);
     }
     public void clearTable(JTable table) {
         DefaultTableModel model=(DefaultTableModel) table.getModel();
@@ -190,13 +234,35 @@ public class DigimonEvolutionJDialog extends javax.swing.JDialog {
         return priorEvolutionsTable;
     }
     
+    public void setCancelButtonListener(ActionListener al){
+        this.cancelButton.addActionListener(al);
+    }
+    public void setdigimonNextEvolutionButtonListener(ActionListener al){
+        this.digimonNextEvolutionButton.addActionListener(al);
+    }
+    public int getRowSelect(JTable table){
+        return table.getSelectedRow();
+    }
+    
+    public JTable getNextEvolutions (){
+        return this.nextEvolutionsTable;
+    }
+    public JTable getProirEvolutions(){
+        return this.priorEvolutionsTable;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JButton digimonNextEvolutionButton;
+    private javax.swing.JButton digimonPriorEvolutionsButton;
     private javax.swing.JTabbedPane evolutionTabbedPane;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel nextEvolutionsPanel;
     private javax.swing.JScrollPane nextEvolutionsScrollPane;
     private javax.swing.JTable nextEvolutionsTable;
     private javax.swing.JPanel priorEvolutionsPanel;
     private javax.swing.JScrollPane priorEvolutionsScrollPane;
     private javax.swing.JTable priorEvolutionsTable;
+    private javax.swing.JButton showInfoNextEvolutionsButton;
+    private javax.swing.JButton showInfoPriorEvolutionsButton;
     // End of variables declaration//GEN-END:variables
 }

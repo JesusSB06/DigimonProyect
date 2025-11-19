@@ -5,9 +5,7 @@
 package com.mycompany.digimonproyect;
 
 import com.mycompany.digimonproyect.controller.MainJFrameController;
-import com.mycompany.digimonproyect.model.digimon.Digimon;
 import com.mycompany.digimonproyect.model.users.Users;
-import com.mycompany.digimonproyect.service.ApiConnection;
 import com.mycompany.digimonproyect.view.MainJFrame;
 import java.io.IOException;
 

@@ -10,7 +10,6 @@ import com.mycompany.digimonproyect.model.users.Users;
 import com.mycompany.digimonproyect.service.ApiConnection;
 import com.mycompany.digimonproyect.view.DigimonJDialog;
 import com.mycompany.digimonproyect.view.InformationDigimonDialog;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -18,8 +17,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,6 +36,7 @@ public class DigimonJDialogController {
         this.view.setSearchButtonActionListener(this.setSearchButtonActionListener());
         this.view.setAddToListButtonActionListener(this.setAddToListButtonActionListener());
         this.view.setShowInfoButtonListener(this.setShowInfoButtonActionListener());
+        this.view.setCancelButtonActionListener(this.setCancelButtonActionListener());
     }
     
     public DigimonJDialogController(DigimonJDialog view, Users userModel, Digimon digimon) throws IOException {
@@ -51,7 +49,7 @@ public class DigimonJDialogController {
         this.view.setShowInfoButtonListener(this.setShowInfoButtonActionListener());
     }
     private void initComponents() throws IOException{
-        this.view.createPanel(this.view.getLogoPanel(),"src/main/resources/img/digidex.jpeg");
+        this.view.createPanel(this.view.getLogoPanel(),"src/main/resources/img/digidex.png");
         this.view.enableFieldComponents(false);
         if(userModel.getCurrentUser() == null){
             this.view.enableAddToListBUtton(false);
@@ -91,11 +89,6 @@ public class DigimonJDialogController {
                     JOptionPane.showMessageDialog(view, "Selecciona un digimon primero");
                     return;
                 }
-                ArrayList<Digimon> digimonList = userModel.getCurrentUser().getDigimon();
-                if (digimonList == null) {
-                    digimonList = new ArrayList<>();
-                    userModel.getCurrentUser().setDigimon(digimonList);
-                } 
                 Digimon nuevoDigimon = getDigimon();
                 userModel.getCurrentUser().getDigimon().add(nuevoDigimon);
                 JOptionPane.showMessageDialog(view, "Se ha añadido el digimon correctamente " +nuevoDigimon.getName() + " a tu lista");
@@ -113,7 +106,7 @@ public class DigimonJDialogController {
                 } else {
                     InformationDigimonDialog id = new InformationDigimonDialog(view, true);
                     try {
-                        InformationDigimonController idc = new InformationDigimonController(id, digimon);
+                        InformationDigimonController idc = new InformationDigimonController(id, userModel, digimon);
                         id.setVisible(true);
                     } catch (IOException ex) {
                         Logger.getLogger(DigimonJDialogController.class.getName()).log(Level.SEVERE, null, ex);

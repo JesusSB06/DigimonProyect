@@ -6,13 +6,15 @@ package com.mycompany.digimonproyect.controller;
 
 import com.mycompany.digimonproyect.model.digimon.Digimon;
 import com.mycompany.digimonproyect.model.digimon.Evolution;
+import com.mycompany.digimonproyect.model.users.Users;
 import com.mycompany.digimonproyect.view.DigimonEvolutionJDialog;
+import com.mycompany.digimonproyect.view.DigimonJDialog;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 import java.util.Vector;
@@ -29,14 +31,17 @@ import javax.swing.JTable;
 public class DigimonEvolutionController {
     private DigimonEvolutionJDialog view;
     private Digimon digimon;
-    public DigimonEvolutionController(DigimonEvolutionJDialog view, Digimon digimon) {
+    private Users userModel;
+    public DigimonEvolutionController(DigimonEvolutionJDialog view, Users userModel, Digimon digimon) {
         this.view = view;
         this.digimon = digimon;
+        this.userModel = userModel;
         this.updateTable(view.getNextEvolutionsTable(), digimon.getNextEvolutions());
         this.updateTable(view.getPriorEvolutionsTable(), digimon.getPriorEvolutions());
+        this.view.setCancelButtonListener(this.setCancelButtonActionListener());
     }
 
-        private void updateTable(JTable table, List<Evolution> evolutions){
+    private void updateTable(JTable table, List<Evolution> evolutions){
         view.clearTable(table);
         for (Evolution d: evolutions) {
             Vector row = new Vector();
@@ -55,10 +60,34 @@ public class DigimonEvolutionController {
             } catch (IOException ex) {
                 Logger.getLogger(PersonalListController.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            row.add(true);
             view.addRowTable(row, table);
         }
             
+    }
+    
+    private ActionListener setCancelButtonActionListener(){
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                view.dispose();
+            }
+        };
+          return al;      
+    }
+    private ActionListener setDigimonNextEvolutionsButtonActionListener(){
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                DigimonJDialog dd = new DigimonJDialog(view,true);
+                
+            }
+        };
+        return al;
+    }
+    
+    private Digimon getDigimonEvolution(JTable table){
+        int row = view.getRowSelect(table);
+        return null;
+   
     }
 }
