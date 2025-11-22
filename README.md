@@ -8,15 +8,27 @@ Usamos la aplicación postman para acceder a la api y estudiarla, observando de 
 El programa permite crear usuarios, con un nombre de usuario y una contraseña, así como iniciar sesión con los mismos. Todos los usuarios tienen la capacidad de visualizar la información de los digimon, así como de buscarlos por su nombre, aún sin haber iniciado sesión. 
 Para crear un usuario, debemos abrir el menú options, y entrar en el apartado de sesión.
 
+![](img/LogIn1.PNG)
+
 Una vez dentro, introduciremos el nombre de usuario y la contraseña que el usuario desee.
+
+![](img/LogIn2.PNG)
 
 Para poder crear la cuenta, los dos campos deben estar rellenados, y el usuario no debe existir previamente.
 
+![](img/LogIn3.PNG)
+
 Cuando hayamos creado el usuario correctamente, la aplicación nos pedirá iniciar sesión.
+
+![](img/LogIn4.PNG)
 
 Para iniciar sesión, accederemos al apartado session desde el menú options, introduciremos un usuario existente así como su contraseña, y pulsamos el botón de iniciar sesión.
 
+![](img/LogIn5.PNG)
+
 Para iniciar sesión es necesario que el usuario exista, y que la contraseña que introduzcamos sea la que está relacionada con ese usuario. 
+
+![](img/LogIn6.PNG)
 
 Una vez iniciada sesión, podremos acceder a todas las funcionalidades de la aplicación.
 Si no iniciamos sesión, podremos buscar Digimon y acceder a su información, pero no podremos introducirlos en la lista personal, ni ver está misma ya que no hemos introducido un usuario, y por lo tanto no tenemos una lista a la que acceder.
@@ -26,19 +38,48 @@ A esta funcionalidad del programa podremos acceder desde el menú “options” 
 
 Después de esto, dependiendo de que tengamos un usuario introducido o no, nos saldrá un JOptionPane que nos dará un aviso de que no hemos introducido ningún usuario en caso de que no lo hayamos:
 
+![](img/DigimonSearch2.png)
+
 Al darle a “Ok”, nos transportará a la ventana “DigimonJDialog.java”  en la cual te permitirá buscar por nombre un digimon:
+
+ ![](img/DigimonSearch3.png)
  
 Esta ventana estará controlada por “DigimonJDialogController.java”, el cual se encargará de las funcionalidades de los elementos del diálogo.
 Cuando pulsemos en el botón buscar, se mostrará una imagen del digimon obtenida de su API junto con las facciones a las que este mismo pertenece, además, habilitará dos botones, El de “Show Information” y el más importante: “Add to list”, este botón sólo estará disponible si se ha introducido un usuario, si no, simplemente no se podrá usar su función. 
 El botón “Search”, guardará el digimon buscado en una variable interna para su uso, si le damos a “Add to List”, este variable Digimon se introducirá a la lista personal del usuario y se guardará para su modificación y manejo del usuario:
 
 El botón “Show Information…”  nos llevara a otro diálogo el cúal nos mostrará toda la información de ese Digimon obtenida desde la API, desde su descripción hasta sus habilidades:
+![](img/DigimonSearch5.png)
 
 Desde esta ventana podremos acceder al botón “Show Evolution chain…”, si pulsamos este botón, nos llevará al último diálogo de esta sección:
+![](img/DigimonSearch6.png)
 
 Este diálogo nos dará acceso a un JTabbedPane con dos tablas, una para las evoluciones y otra para las preevoluciones, cada una con sus correspondientes condiciones, a la cúal podremos acceder de forma completa con el botón “Show info…” y con el botón “Go to digimon…” nos volverá al diálogo principal de la ventana para buscar ese Digimon y acceder a su información.
 
 ### Lista personal de digimon
+La 3ra opción disponible en nuestro programa sería la lista personal.
+
+//Imagen de la lista personal
+
+En esta lista, el usuario será capaz de encontrar los digimons que haya decidido almacenar mientras estaba utilizando la funcionalidad de nuestra aplicación de buscar digimons.
+
+//Imagen de la vista del popup tras agregar 
+
+Adicionalmente, este puede cambiar toda la información de cada digimon personal, desde simples como el nombre o su apodo a más complejas como la imagen, o las habilidades, en la versión actual del programa para los cambios de atributos complejos, el usuario, debe de introducir el nombre de un digimon, de el cual, el digimon de la lista, obtendrá susodichos atributos.
+
+//Multiples ejemplos 
+
+También es posible eliminar digimon de la lista:
+
+//Digimon eliminado
+
+Clonar ya existentes:
+
+//Digimon clonado
+
+Mostrar los campos para facilitar su comprensión:
+
+//Ejemplo de campo mostrado
 
 ## Mejoras
 - Sesiones de usuario
@@ -69,5 +110,6 @@ Una segunda opción de crear Digimon para expertos de la saga, que permita agreg
 - Adán Otero López/Anonymous180937642012
 - Jesús Santos Baquero/JesusSB06
 - Jose Carlos Domínguez Figueiras/a24josedf
+
 
 
