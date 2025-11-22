@@ -41,32 +41,33 @@ Este diálogo nos dará acceso a un JTabbedPane con dos tablas, una para las evo
 ### Lista personal de digimon
 
 ## Mejoras
-Sesiones de usuario
-Introducción de opción de eliminar usuario, en caso de comercializar, para seguir con la ley protección de datos.
-Visualización de fecha y hora de último inicio de sesión.
-
+- Sesiones de usuario
+    - Introducción de opción de eliminar usuario, en caso de comercializar, para seguir con la ley protección de datos.
+    - Visualización de fecha y hora de último inicio de sesión.
+- Búsqueda de Digimon
+    - Mejor visualización de los diálogos, más estéticos.
+    - Poder acceder a las evoluciones sin tiempo de carga o espera.
+    - Cierre de ciertas ventanas según abras más diálogos en caso de que el usuario habrá demasiadas.
+    - Lista personal de Digimon:
+Una segunda opción de crear Digimon para expertos de la saga, que permita agregar características una a una, en vez de adquirirlas de otro digimon.
 
 ## Reparto de tareas
 - Adán Otero López
-Ventana y controlador de la lista de usuarios.
+    - Ventana y controlador de la lista de usuarios.
 - Jesús Santos Baquero
-Capacidad del programa de acceso a los datos de la API.
-Ventana y controlador de “DigimonJDialog” y los diálogos y controladores que desciende de este.
+    - Capacidad del programa de acceso a los datos de la API.
+    - Ventana y controlador de “DigimonJDialog” y los diálogos y controladores que desciende de este.
 - Jose Carlos Domínguez Figueiras
-Gestión de usuarios (inicio de sesión, creación de los mismos, manejo de errores, almacenamiento de los usuarios).
-Ventana y controlador de la inicio de sesión.
+    - Gestión de usuarios (inicio de sesión, creación de los mismos, manejo de errores, almacenamiento de los usuarios).
+    - Ventana y controlador de la inicio de sesión.
 - Tareas realizadas en su mayoría por todos los integrantes:
-Toma de decisiones, distribución del trabajo, diseño estilístico de la aplicación, sugerencias y ayudas mutuas en las tareas de los demás, captura de errores, creación del README. 
-Búsqueda de Digimon
-Mejor visualización de los diálogos, más estéticos.
-Poder acceder a las evoluciones sin tiempo de carga o espera.
-Cierre de ciertas ventanas según abras más diálogos en caso de que el usuario habrá demasiadas.
-Lista personal de Digimon:
-Una segunda opción de crear Digimon para expertos de la saga, que permita agregar características una a una, en vez de adquirirlas de otro digimon.
+    - Toma de decisiones, distribución del trabajo, diseño estilístico de la aplicación, sugerencias y ayudas mutuas en las tareas de los demás, captura de errores, creación del README. 
+
 ## Conclusiones
 
 ## Autores
-Adán Otero López/Anonymous180937642012
-Jesús Santos Baquero/JesusSB06
-Jose Carlos Domínguez Figueiras/a24josedf
+- Adán Otero López/Anonymous180937642012
+- Jesús Santos Baquero/JesusSB06
+- Jose Carlos Domínguez Figueiras/a24josedf
+
 
