@@ -49,4 +49,9 @@ public class Field implements Serializable{
         this.image = image;
     }
     
+    @Override
+    public String toString() {
+        return field;
+    }
+    
 }

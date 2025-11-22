@@ -6,16 +6,21 @@ package com.mycompany.digimonproyect.view;
 
 import java.awt.Component;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Vector;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.ListCellRenderer;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.text.Highlighter;
 
 /**
  *
@@ -57,14 +62,14 @@ public class PersonalListJDialog extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Icon", "Nickname", "Name", "XAntibody"
+                "Icon", "Nickname", "Name", "XAntibody", "Levels", "Types", "Attributes", "Fields", "Release Date", "Descriptions", "Skills", "Prior Evolutions", "Next Evolutions"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -114,7 +119,7 @@ public class PersonalListJDialog extends javax.swing.JDialog {
                                 .addComponent(modifyButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(showButton))
-                            .addComponent(digimonScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE))
+                            .addComponent(digimonScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1274, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -137,28 +142,39 @@ public class PersonalListJDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void setDeleteButtonActionListener(ActionListener al){
+    public void setDeleteButtonActionListener(ActionListener al) {
         this.deleteButton.addActionListener(al);
     }
-    public void setModifyButtonActionListener(ActionListener al){
+
+    public void setModifyButtonActionListener(ActionListener al) {
         this.modifyButton.addActionListener(al);
     }
-    public void setShowButtonActionListener(ActionListener al){
+
+    public void setShowButtonActionListener(ActionListener al) {
         this.showButton.addActionListener(al);
     }
-    public void setCreateButtonActionListener(ActionListener al){
+
+    public void setCreateButtonActionListener(ActionListener al) {
         this.createButton.addActionListener(al);
     }
-    public void setCloneButtonActionListener(ActionListener al){
+
+    public void setCloneButtonActionListener(ActionListener al) {
         this.cloneButton.addActionListener(al);
     }
-    public void setTitleLabel(String s){
+
+    public void setTitleLabel(String s) {
         this.titleLabel.setText(s);
     }
-    public int getSelectionColumn(){
+
+    public int getSelectionColumn() {
         return this.digimonTable.getSelectedColumn();
     }
-    public int getSelectionRow(){
+
+    public Object getSelection(){
+        return this.digimonTable.getModel().getValueAt(getSelectionRow(),getSelectionColumn());
+    }
+    
+    public int getSelectionRow() {
         return this.digimonTable.getSelectedRow();
     }
 
@@ -182,29 +198,69 @@ public class PersonalListJDialog extends javax.swing.JDialog {
                     label.setText(value != null ? value.toString() : "");
                 }
 
-                label.setOpaque(true);
+                //label.setOpaque(true);
                 label.setBackground(isSelected ? table.getSelectionBackground() : table.getBackground());
-                label.setForeground(isSelected ? table.getSelectionForeground() : table.getForeground());
-
+                //label.setForeground(isSelected ? table.getSelectionForeground() : table.getForeground());
+                if (hasFocus) {
+                    label.setBorder(UIManager.getBorder("Table.focusCellHighlightBorder"));
+                } else {
+                    label.setBorder(null);
+                }
+                
                 return label;
             }
         });
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer listas = new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                JTextArea area = new JTextArea();
+                area.setLineWrap(true);
+                area.setWrapStyleWord(true);
+                if (value instanceof List<?>) {
+                    StringBuilder sb = new StringBuilder();
+                    for (Object o : (List) value) {
+                        sb.append(o).append("\n");
+                    }
+                    area.setText(sb.toString());
+                } else {
+                    area.setText("");
+                }
+                //area.setOpaque(true);
+                area.setBackground(isSelected ? table.getSelectionBackground() : table.getBackground());
+                //area.setForeground(isSelected ? table.getSelectionForeground() : table.getForeground());
+                if (hasFocus) {
+                    area.setBorder(UIManager.getBorder("Table.focusCellHighlightBorder"));
+                } else {
+                    area.setBorder(null);
+                }
+                
+                return area;
+            }
+        };
         digimonTable.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
         digimonTable.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
+        digimonTable.getColumnModel().getColumn(4).setCellRenderer(listas);
+        digimonTable.getColumnModel().getColumn(5).setCellRenderer(listas);
+        digimonTable.getColumnModel().getColumn(6).setCellRenderer(listas);
+        digimonTable.getColumnModel().getColumn(7).setCellRenderer(listas);
+        digimonTable.getColumnModel().getColumn(8).setCellRenderer(centerRenderer);
+        digimonTable.getColumnModel().getColumn(9).setCellRenderer(listas);
+        digimonTable.getColumnModel().getColumn(10).setCellRenderer(listas);
+        digimonTable.getColumnModel().getColumn(11).setCellRenderer(listas);
+        digimonTable.getColumnModel().getColumn(12).setCellRenderer(listas);
     }
+
     public void clearTable() {
-        DefaultTableModel model=(DefaultTableModel) this.digimonTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) this.digimonTable.getModel();
         model.setRowCount(0);
         digimonTable.clearSelection();
         digimonTable.revalidate();
         digimonTable.repaint();
     }
-    
 
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cloneButton;
     private javax.swing.JButton createButton;

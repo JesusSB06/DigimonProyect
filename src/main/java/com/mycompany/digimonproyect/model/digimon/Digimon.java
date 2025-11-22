@@ -14,6 +14,7 @@ import com.mycompany.digimonproyect.model.digimon.Skill;
 import com.mycompany.digimonproyect.model.digimon.Type;
 import java.util.List;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -127,6 +128,9 @@ public class Digimon implements Serializable{
     }
 
     public String getReleaseDate() {
+        if (releaseDate == null || releaseDate.isEmpty()) {
+            return "";
+        }
         return releaseDate;
     }
 

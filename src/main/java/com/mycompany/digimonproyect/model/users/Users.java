@@ -1,5 +1,15 @@
 package com.mycompany.digimonproyect.model.users;
 
+import com.mycompany.digimonproyect.model.digimon.Attribute;
+import com.mycompany.digimonproyect.model.digimon.Description;
+import com.mycompany.digimonproyect.model.digimon.Digimon;
+import com.mycompany.digimonproyect.model.digimon.Evolution;
+import com.mycompany.digimonproyect.model.digimon.Field;
+import com.mycompany.digimonproyect.model.digimon.Image;
+import com.mycompany.digimonproyect.model.digimon.Level;
+import com.mycompany.digimonproyect.model.digimon.Skill;
+import com.mycompany.digimonproyect.model.digimon.Type;
+import com.mycompany.digimonproyect.service.ApiConnection;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -8,6 +18,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Users implements Serializable {
 
@@ -70,4 +81,12 @@ public class Users implements Serializable {
             return new ArrayList<>();   
         }
     }
+    
+    public Digimon getNewDigimon() {
+        Digimon dummy = ApiConnection.JsonToDigimon("agumon");
+        return new Digimon(0, "new digimon", false,dummy.getImages() , new ArrayList<Level>(), new ArrayList<Type>(), new ArrayList<Attribute>(), new ArrayList<Field>(), "", new ArrayList<Description>(), new ArrayList<Skill>(), new ArrayList<Evolution>(), new ArrayList<Evolution>());
+    }
+    
+    
+    
 }

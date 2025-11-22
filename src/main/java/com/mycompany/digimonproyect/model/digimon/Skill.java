@@ -48,4 +48,9 @@ public class Skill implements Serializable{
         this.description = description;
     }
     
+    @Override
+    public String toString() {
+        return skill+": "+description;
+    }
+    
 }
