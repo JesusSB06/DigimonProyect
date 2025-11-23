@@ -127,7 +127,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     public void setBackgroundImage() {
-        Image image1 = new ImageIcon("src/main/resources/img/digidex.png").getImage();
+        Image image1 = new ImageIcon(getClass().getResource("/img/digidex.png")).getImage();
         setImageLogoPanel(image1);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -214,6 +214,10 @@ public class DigimonJDialog extends javax.swing.JDialog {
         Image image = getImage(route);
         setImageLogoPanel(image, panel);
     }
+    public void createPanel(JPanel panel, URL route) throws MalformedURLException, IOException {
+        Image image = new ImageIcon(route).getImage();
+        setImageLogoPanel(image, panel);
+    }
 
     public Image getImage(String route) throws IOException {
         Image image = null;

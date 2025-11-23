@@ -54,7 +54,7 @@ public class DigimonJDialogController {
         this.view.setAddToListButtonActionListener(this.setAddToListButtonActionListener());
     }
     private void initComponents() throws IOException{
-        this.view.createPanel(this.view.getLogoPanel(),"src/main/resources/img/digidex.png");
+        this.view.createPanel(this.view.getLogoPanel(),getClass().getResource("/img/digidex.png"));
         this.view.enableFieldComponents(false);
         this.view.enableShowInformationButton(false);
         this.view.enableAddToListBUtton(false, false);
