@@ -38,4 +38,9 @@ public class Attribute implements Serializable{
         this.attribute = attribute;
     }
     
+    @Override
+    public String toString() {
+        return attribute;
+    }
+    
 }

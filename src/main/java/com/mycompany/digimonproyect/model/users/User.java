@@ -1,6 +1,14 @@
 package com.mycompany.digimonproyect.model.users;
 
+import com.mycompany.digimonproyect.model.digimon.Attribute;
+import com.mycompany.digimonproyect.model.digimon.Description;
 import com.mycompany.digimonproyect.model.digimon.Digimon;
+import com.mycompany.digimonproyect.model.digimon.Evolution;
+import com.mycompany.digimonproyect.model.digimon.Field;
+import com.mycompany.digimonproyect.model.digimon.Image;
+import com.mycompany.digimonproyect.model.digimon.Level;
+import com.mycompany.digimonproyect.model.digimon.Skill;
+import com.mycompany.digimonproyect.model.digimon.Type;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -46,12 +54,8 @@ public class User implements Serializable{
         }
     }
     
-    public void changeDigimonNickname(int n,String s){
-        digimon.get(n).setNickname(s);
-    }
     public void setDigimon(ArrayList<Digimon> digimon) {
         this.digimon = digimon;
     }
-    
     
 }

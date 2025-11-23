@@ -26,4 +26,5 @@ public class Image implements Serializable{
     public void setTransparent(boolean transparent) {
         this.transparent = transparent;
     }
+    
 }

@@ -8,6 +8,7 @@ import com.mycompany.digimonproyect.model.digimon.Digimon;
 import com.mycompany.digimonproyect.model.digimon.Field;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
@@ -38,8 +39,13 @@ public class DigimonJDialog extends javax.swing.JDialog {
     public DigimonJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setVerticalBackgroundPanel();
     }
-
+    public DigimonJDialog(java.awt.Dialog parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        this.setVerticalBackgroundPanel();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,18 +67,17 @@ public class DigimonJDialog extends javax.swing.JDialog {
         cancelButton = new javax.swing.JButton();
         showInformationButton = new javax.swing.JButton();
         addToListButton = new javax.swing.JButton();
-        userLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         backgroundPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        searchButton.setText("Buscar");
+        searchButton.setText("Search");
 
         searchTextField.setText("");
 
-        serachLabel.setText("Buscar:");
+        serachLabel.setText("Search:");
 
         logoPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -105,13 +110,11 @@ public class DigimonJDialog extends javax.swing.JDialog {
 
         fieldScrollPane.setViewportView(fieldList);
 
-        cancelButton.setText("Cancelar");
+        cancelButton.setText("Cancel");
 
         showInformationButton.setText("Show information...");
 
         addToListButton.setText("Add to list");
-
-        userLabel.setText("");
 
         javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
         backgroundPanel.setLayout(backgroundPanelLayout);
@@ -143,18 +146,13 @@ public class DigimonJDialog extends javax.swing.JDialog {
                                     .addComponent(addToListButton)
                                     .addComponent(showInformationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(15, 15, 15))
-            .addGroup(backgroundPanelLayout.createSequentialGroup()
-                .addComponent(userLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(userLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addComponent(factionsLabel)
@@ -184,7 +182,7 @@ public class DigimonJDialog extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(backgroundPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -235,13 +233,13 @@ public class DigimonJDialog extends javax.swing.JDialog {
     public JPanel getDigimonPanel() {
         return this.digimonPanel;
     }
-
-    public void setUserLabel(String value) {
-        this.userLabel.setText(value);
-    }
-    
+   
     public String getSearchTextField() {
         return this.searchTextField.getText().trim();
+    }
+    
+    public void setSearchTextField(String value){
+        this.searchTextField.setText(value);
     }
 
     public void setSearchButtonActionListener(ActionListener al) {
@@ -275,8 +273,16 @@ public class DigimonJDialog extends javax.swing.JDialog {
         }
     }
     
-    public void enableAddToListBUtton(boolean value){
-        this.addToListButton.setEnabled(value);
+    public void enableAddToListBUtton(boolean value1, boolean value2){
+        this.addToListButton.setEnabled(value1);
+        this.addToListButton.setVisible(value2);
+    }
+    public void enableShowInformationButton(boolean value){
+        this.showInformationButton.setEnabled(value);
+        this.showInformationButton.setVisible(value);
+    }
+    public void setVerticalBackgroundPanel(){
+        this.backgroundPanel.setMinimumSize(new Dimension(0,365));
     }
     
     
@@ -294,7 +300,6 @@ public class DigimonJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField searchTextField;
     private javax.swing.JLabel serachLabel;
     private javax.swing.JButton showInformationButton;
-    private javax.swing.JLabel userLabel;
     // End of variables declaration//GEN-END:variables
 
 

@@ -6,16 +6,21 @@ package com.mycompany.digimonproyect.view;
 
 import java.awt.Component;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Vector;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.ListCellRenderer;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.text.Highlighter;
 
 /**
  *
@@ -44,9 +49,11 @@ public class PersonalListJDialog extends javax.swing.JDialog {
         digimonScrollPane = new javax.swing.JScrollPane();
         digimonTable = new javax.swing.JTable();
         titleLabel = new javax.swing.JLabel();
-        nicknameButton = new javax.swing.JButton();
+        modifyButton = new javax.swing.JButton();
         showButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        createButton = new javax.swing.JButton();
+        cloneButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -55,14 +62,14 @@ public class PersonalListJDialog extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Icon", "Nickname", "Name", "XAntibody"
+                "Icon", "Nickname", "Name", "XAntibody", "Levels", "Types", "Attributes", "Fields", "Release Date", "Descriptions", "Skills", "Prior Evolutions", "Next Evolutions"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -74,17 +81,20 @@ public class PersonalListJDialog extends javax.swing.JDialog {
             }
         });
         digimonTable.setRowHeight(80);
-        digimonTable.setRowSelectionAllowed(false);
         digimonTable.getTableHeader().setReorderingAllowed(false);
         digimonScrollPane.setViewportView(digimonTable);
 
         titleLabel.setText("Personal List");
 
-        nicknameButton.setText("Change Nickname..");
+        modifyButton.setText("Modify...");
 
         showButton.setText("Show Info..");
 
         deleteButton.setText("Delete");
+
+        createButton.setText("Create");
+
+        cloneButton.setText("Clone");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,13 +109,17 @@ public class PersonalListJDialog extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 47, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(deleteButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nicknameButton)
+                                .addComponent(cloneButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(createButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(modifyButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(showButton))
-                            .addComponent(digimonScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(digimonScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1274, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -114,34 +128,53 @@ public class PersonalListJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(titleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(digimonScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(digimonScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nicknameButton)
+                    .addComponent(modifyButton)
                     .addComponent(deleteButton)
-                    .addComponent(showButton))
+                    .addComponent(showButton)
+                    .addComponent(createButton)
+                    .addComponent(cloneButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void setDeleteButtonActionListener(ActionListener al){
+    public void setDeleteButtonActionListener(ActionListener al) {
         this.deleteButton.addActionListener(al);
     }
-    public void setNicknameButtonActionListener(ActionListener al){
-        this.nicknameButton.addActionListener(al);
+
+    public void setModifyButtonActionListener(ActionListener al) {
+        this.modifyButton.addActionListener(al);
     }
-    public void setShowButtonActionListener(ActionListener al){
+
+    public void setShowButtonActionListener(ActionListener al) {
         this.showButton.addActionListener(al);
     }
-    public void setTitleLabel(String s){
+
+    public void setCreateButtonActionListener(ActionListener al) {
+        this.createButton.addActionListener(al);
+    }
+
+    public void setCloneButtonActionListener(ActionListener al) {
+        this.cloneButton.addActionListener(al);
+    }
+
+    public void setTitleLabel(String s) {
         this.titleLabel.setText(s);
     }
-    public String getSelection(){
-        return this.digimonTable.getValueAt(this.digimonTable.getSelectedRow(), 2).toString();
+
+    public int getSelectionColumn() {
+        return this.digimonTable.getSelectedColumn();
     }
-    public int getSelectionInt(){
+
+    public Object getSelection(){
+        return this.digimonTable.getModel().getValueAt(getSelectionRow(),getSelectionColumn());
+    }
+    
+    public int getSelectionRow() {
         return this.digimonTable.getSelectedRow();
     }
 
@@ -165,34 +198,76 @@ public class PersonalListJDialog extends javax.swing.JDialog {
                     label.setText(value != null ? value.toString() : "");
                 }
 
-                label.setOpaque(true);
+                //label.setOpaque(true);
                 label.setBackground(isSelected ? table.getSelectionBackground() : table.getBackground());
-                label.setForeground(isSelected ? table.getSelectionForeground() : table.getForeground());
-
+                //label.setForeground(isSelected ? table.getSelectionForeground() : table.getForeground());
+                if (hasFocus) {
+                    label.setBorder(UIManager.getBorder("Table.focusCellHighlightBorder"));
+                } else {
+                    label.setBorder(null);
+                }
+                
                 return label;
             }
         });
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer listas = new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                JTextArea area = new JTextArea();
+                area.setLineWrap(true);
+                area.setWrapStyleWord(true);
+                if (value instanceof List<?>) {
+                    StringBuilder sb = new StringBuilder();
+                    for (Object o : (List) value) {
+                        sb.append(o).append("\n");
+                    }
+                    area.setText(sb.toString());
+                } else {
+                    area.setText("");
+                }
+                //area.setOpaque(true);
+                area.setBackground(isSelected ? table.getSelectionBackground() : table.getBackground());
+                //area.setForeground(isSelected ? table.getSelectionForeground() : table.getForeground());
+                if (hasFocus) {
+                    area.setBorder(UIManager.getBorder("Table.focusCellHighlightBorder"));
+                } else {
+                    area.setBorder(null);
+                }
+                
+                return area;
+            }
+        };
         digimonTable.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
         digimonTable.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
+        digimonTable.getColumnModel().getColumn(4).setCellRenderer(listas);
+        digimonTable.getColumnModel().getColumn(5).setCellRenderer(listas);
+        digimonTable.getColumnModel().getColumn(6).setCellRenderer(listas);
+        digimonTable.getColumnModel().getColumn(7).setCellRenderer(listas);
+        digimonTable.getColumnModel().getColumn(8).setCellRenderer(centerRenderer);
+        digimonTable.getColumnModel().getColumn(9).setCellRenderer(listas);
+        digimonTable.getColumnModel().getColumn(10).setCellRenderer(listas);
+        digimonTable.getColumnModel().getColumn(11).setCellRenderer(listas);
+        digimonTable.getColumnModel().getColumn(12).setCellRenderer(listas);
     }
+
     public void clearTable() {
-        DefaultTableModel model=(DefaultTableModel) this.digimonTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) this.digimonTable.getModel();
         model.setRowCount(0);
         digimonTable.clearSelection();
         digimonTable.revalidate();
         digimonTable.repaint();
     }
-    
 
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cloneButton;
+    private javax.swing.JButton createButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JScrollPane digimonScrollPane;
     private javax.swing.JTable digimonTable;
-    private javax.swing.JButton nicknameButton;
+    private javax.swing.JButton modifyButton;
     private javax.swing.JButton showButton;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables

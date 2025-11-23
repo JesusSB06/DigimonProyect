@@ -33,14 +33,18 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="deleteButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="nicknameButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="cloneButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="createButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="modifyButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="showButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="digimonScrollPane" alignment="1" pref="0" max="32767" attributes="0"/>
+                          <Component id="digimonScrollPane" alignment="1" pref="1274" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -54,12 +58,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="digimonScrollPane" min="-2" pref="193" max="-2" attributes="0"/>
+              <Component id="digimonScrollPane" min="-2" pref="355" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="nicknameButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="modifyButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="deleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="showButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="createButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cloneButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -77,11 +83,20 @@
         <Component class="javax.swing.JTable" name="digimonTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="0">
+              <Table columnCount="13" rowCount="0">
                 <Column editable="false" title="Icon" type="java.lang.Object"/>
                 <Column editable="false" title="Nickname" type="java.lang.Object"/>
                 <Column editable="false" title="Name" type="java.lang.Object"/>
                 <Column editable="false" title="XAntibody" type="java.lang.Boolean"/>
+                <Column editable="false" title="Levels" type="java.lang.Object"/>
+                <Column editable="false" title="Types" type="java.lang.Object"/>
+                <Column editable="false" title="Attributes" type="java.lang.Object"/>
+                <Column editable="false" title="Fields" type="java.lang.Object"/>
+                <Column editable="false" title="Release Date" type="java.lang.Object"/>
+                <Column editable="false" title="Descriptions" type="java.lang.Object"/>
+                <Column editable="false" title="Skills" type="java.lang.Object"/>
+                <Column editable="false" title="Prior Evolutions" type="java.lang.Object"/>
+                <Column editable="false" title="Next Evolutions" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -109,7 +124,6 @@
               </TableColumnModel>
             </Property>
             <Property name="rowHeight" type="int" value="80"/>
-            <Property name="rowSelectionAllowed" type="boolean" value="false"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
             </Property>
@@ -122,9 +136,9 @@
         <Property name="text" type="java.lang.String" value="Personal List"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="nicknameButton">
+    <Component class="javax.swing.JButton" name="modifyButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Change Nickname.."/>
+        <Property name="text" type="java.lang.String" value="Modify..."/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="showButton">
@@ -135,6 +149,16 @@
     <Component class="javax.swing.JButton" name="deleteButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="createButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="cloneButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Clone"/>
       </Properties>
     </Component>
   </SubComponents>

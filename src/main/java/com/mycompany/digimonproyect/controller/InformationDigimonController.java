@@ -6,6 +6,7 @@ package com.mycompany.digimonproyect.controller;
 
 import com.mycompany.digimonproyect.model.digimon.Digimon;
 import com.mycompany.digimonproyect.model.digimon.*;
+import com.mycompany.digimonproyect.model.users.Users;
 import com.mycompany.digimonproyect.view.DigimonEvolutionJDialog;
 import com.mycompany.digimonproyect.view.InformationDigimonDialog;
 import java.awt.event.ActionEvent;
@@ -20,10 +21,12 @@ import javax.swing.DefaultListModel;
  */
 public class InformationDigimonController {
     private InformationDigimonDialog view;
+    private Users userModel;
     private Digimon digimon;
 
-    public InformationDigimonController(InformationDigimonDialog view,  Digimon digimon) throws IOException {
+    public InformationDigimonController(InformationDigimonDialog view, Users userModel,  Digimon digimon) throws IOException {
         this.view = view;
+        this.userModel = userModel;
         this.digimon = digimon;
         this.initComponents();
         this.view.setCancelButtonListener(this.setCancelButtonActionListener());
@@ -45,7 +48,7 @@ public class InformationDigimonController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DigimonEvolutionJDialog  ded = new DigimonEvolutionJDialog(view,true);
-                DigimonEvolutionController dec = new DigimonEvolutionController(ded, digimon);
+                DigimonEvolutionController dec = new DigimonEvolutionController(ded,userModel, digimon);
                 ded.setVisible(true);
             }
         };

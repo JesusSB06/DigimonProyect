@@ -34,7 +34,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="backgroundPanel" min="-2" max="-2" attributes="0"/>
+          <Component id="backgroundPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -84,10 +84,6 @@
                   </Group>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               </Group>
-              <Group type="102" attributes="0">
-                  <Component id="userLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -95,9 +91,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="logoPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="userLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="8" max="32767" attributes="0"/>
+                  <EmptySpace pref="36" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="factionsLabel" min="-2" max="-2" attributes="0"/>
@@ -126,7 +120,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="searchButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Buscar"/>
+            <Property name="text" type="java.lang.String" value="Search"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="searchTextField">
@@ -138,7 +132,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="serachLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Buscar:"/>
+            <Property name="text" type="java.lang.String" value="Search:"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="logoPanel">
@@ -208,7 +202,7 @@
         </Container>
         <Component class="javax.swing.JButton" name="cancelButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cancelar"/>
+            <Property name="text" type="java.lang.String" value="Cancel"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="showInformationButton">
@@ -219,13 +213,6 @@
         <Component class="javax.swing.JButton" name="addToListButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Add to list"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="userLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;&quot;" type="code"/>
-            </Property>
           </Properties>
         </Component>
       </SubComponents>

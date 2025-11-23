@@ -92,6 +92,8 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
+        digimonLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        digimonLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         digimonLabel.setText("");
 
         xAntiBodyLabel.setText("");
@@ -106,6 +108,7 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
 
         attributesLabel.setText("Attributes:");
 
+        attributesList.setBorder(null);
         attributesScrollPane.setViewportView(attributesList);
 
         skillLabel.setText("Skills: ");
@@ -114,6 +117,7 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
 
         fieldLabel.setText("Fields: ");
 
+        fieldsList.setBorder(null);
         fieldScrollPane.setViewportView(fieldsList);
 
         cancelButton.setText("Cancel");
@@ -122,10 +126,12 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
 
         levelsLabel.setText("Levels: ");
 
+        levelsList.setBorder(null);
         levelsScrollPane.setViewportView(levelsList);
 
         typeLabel.setText("Types: ");
 
+        TypesList.setBorder(null);
         typeScrollPane.setViewportView(TypesList);
 
         createLabel.setText("");
@@ -148,43 +154,33 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
                             .addComponent(attributesLabel))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(levelsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(attributesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(descriptionScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(skillLabel)
+                                    .addComponent(fieldLabel)
+                                    .addComponent(typeLabel))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(levelsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(attributesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(descriptionScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(30, 30, 30)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(skillLabel)
-                                            .addComponent(fieldLabel)
-                                            .addComponent(typeLabel))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(skillScrollPane)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(7, 7, 7)
-                                                .addComponent(typeScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE))))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(fieldScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(skillScrollPane)
+                                    .addComponent(fieldScrollPane)
+                                    .addComponent(typeScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(369, 369, 369)
-                                        .addComponent(digimonLabel))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(xAntiBodyLabel)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(29, 29, 29)
+                                .addComponent(digimonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 75, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(createLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(xAntiBodyLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(evolutionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(41, 41, 41)))
                         .addComponent(cancelButton)))
@@ -194,22 +190,17 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(digimonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(digimonLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(xAntiBodyLabel)
-                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(digimonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(digimonLabel))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(descriptionLabel)
-                            .addComponent(descriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                            .addComponent(descriptionScrollPane)
                             .addComponent(skillLabel)
-                            .addComponent(skillScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(skillScrollPane))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(fieldScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
@@ -225,9 +216,10 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
                             .addComponent(levelsLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(createLabel)
-                        .addGap(64, 64, 64))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(xAntiBodyLabel)
+                        .addGap(36, 36, 36))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(evolutionButton)
                             .addComponent(cancelButton))
@@ -238,17 +230,11 @@ public class InformationDigimonDialog extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
         );
 
         pack();

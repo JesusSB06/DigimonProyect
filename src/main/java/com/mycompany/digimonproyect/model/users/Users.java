@@ -1,31 +1,35 @@
 package com.mycompany.digimonproyect.model.users;
 
+import com.mycompany.digimonproyect.model.digimon.Attribute;
+import com.mycompany.digimonproyect.model.digimon.Description;
+import com.mycompany.digimonproyect.model.digimon.Digimon;
+import com.mycompany.digimonproyect.model.digimon.Evolution;
+import com.mycompany.digimonproyect.model.digimon.Field;
+import com.mycompany.digimonproyect.model.digimon.Image;
+import com.mycompany.digimonproyect.model.digimon.Level;
+import com.mycompany.digimonproyect.model.digimon.Skill;
+import com.mycompany.digimonproyect.model.digimon.Type;
+import com.mycompany.digimonproyect.service.ApiConnection;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- *
- * @author dam2_alu04@inf.ald
- */
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private ArrayList<User> users;
     private User currentUser;
+    private final File file = new File("users.ser");
 
-    public Users() throws IOException, ClassNotFoundException {
-        File file = new File("users.ser");
-        file.createNewFile();
-        users = new ArrayList();
-        currentUser = null;
-        
+    public Users() {
+        this.users = deserializedList();  
+        this.currentUser = null;
     }
 
     public User getCurrentUser() {
@@ -33,45 +37,56 @@ public class Users implements Serializable {
     }
 
     public void setCurrentUser(User currentUser) {
-       this.currentUser = currentUser;
+        this.currentUser = currentUser;
     }
 
     public ArrayList<User> getUsers() {
         return users;
     }
 
-    public void addUser(User e) throws IOException {
-        users.add(e);
+    public void addUser(User u) throws IOException {
+        users.add(u);
         serializeList();
     }
 
-    public void removeUser(User e) {
-        users.remove(e);
+    public void removeUser(User u) throws IOException {
+        users.remove(u);
+        serializeList();
     }
 
-    public void serializeList() throws FileNotFoundException, IOException {
-        
-        FileOutputStream fos = new FileOutputStream("users.ser");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(users);
-        oos.close();
-    }
-
-    public ArrayList<User> deserializedList() throws IOException, ClassNotFoundException {
-        FileInputStream fis = new FileInputStream("users.ser");
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        ArrayList<User> dUsers = (ArrayList<User>) ois.readObject();
-        ois.close();
-        return dUsers;
-    }
-    
-    public User getUser (String name) throws IOException, ClassNotFoundException{
-        for (User u : deserializedList()) {
+    public User getUser(String name) {
+        for (User u : users) {
             if (u.getName().equals(name)) {
                 return u;
             }
         }
         return null;
     }
+    
+    public void serializeList() throws IOException {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+            oos.writeObject(users);
+        }
+    }
 
+    public ArrayList<User> deserializedList() {
+        if (!file.exists() || file.length() == 0) {
+            return new ArrayList<>();
+        }
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+            return (ArrayList<User>) ois.readObject();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return new ArrayList<>();   
+        }
+    }
+    
+    public Digimon getNewDigimon() {
+        Digimon dummy = ApiConnection.JsonToDigimon("agumon");
+        return new Digimon(0, "new digimon", false,dummy.getImages() , new ArrayList<Level>(), new ArrayList<Type>(), new ArrayList<Attribute>(), new ArrayList<Field>(), "", new ArrayList<Description>(), new ArrayList<Skill>(), new ArrayList<Evolution>(), new ArrayList<Evolution>());
+    }
+    
+    
+    
 }
