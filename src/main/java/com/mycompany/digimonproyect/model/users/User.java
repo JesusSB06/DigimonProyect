@@ -15,6 +15,7 @@ public class User implements Serializable{
     private ArrayList<Digimon> digimon;
 
     public User(String name, String password) {
+        this.digimon = new ArrayList<>();
         this.name = name;
         this.password = password;
     }
@@ -39,8 +40,18 @@ public class User implements Serializable{
         return digimon;
     }
 
+    public void delDigimon(int n) {
+        if (n != -1) {
+            digimon.remove(n);
+        }
+    }
+    
+    public void changeDigimonNickname(int n,String s){
+        digimon.get(n).setNickname(s);
+    }
     public void setDigimon(ArrayList<Digimon> digimon) {
         this.digimon = digimon;
     }
+    
     
 }
