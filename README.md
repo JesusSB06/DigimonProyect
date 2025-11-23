@@ -36,7 +36,7 @@ Si no iniciamos sesión, podremos buscar Digimon y acceder a su información, pe
 La opción principal del programa sería la búsqueda de Digimons a traves de la API (https://digi-api.com/api/v1/digimon), esta funcionalidad podra ser usada con o sin usuario registrado pero con un usuario no registrado el usuario poseera ciertas restricciones que se explicaran mas adelante:
 A esta funcionalidad del programa podremos acceder desde el menú “options” de la ventana principal del programa, se accede pulsando en la opción “DigimonAPI”:
 
-
+![](img/DigimonSearch4.png)
 
 Después de esto, dependiendo de que tengamos un usuario introducido o no, nos saldrá un JOptionPane que nos dará un aviso de que no hemos introducido ningún usuario en caso de que no lo hayamos:
 
@@ -104,7 +104,7 @@ Como crear un Digimon por defecto para modificar:
 ## Reparto de tareas
 - Adán Otero López
     - Funcionalidades como crear, modificar y eliminar Digimon; presentes en la vista lista personal.
-    - Ventana y controlador de la lista de digimons de cada usuario. <--- IMPORTANTE QUE LO HABIA ESCRITO MAL
+    - Ventana y controlador de la lista de digimons de cada usuario.
 - Jesús Santos Baquero
     - Capacidad del programa de acceso a los datos de la API.
     - Ventana y controlador de “DigimonJDialog” y los diálogos y controladores que desciende de este.
@@ -116,8 +116,15 @@ Como crear un Digimon por defecto para modificar:
 
 ## Conclusiones
 
+Con este proyecto, el equipo aprendio a manejar los datos de las apis, aplicandolos a una aplicación, la cual funciona correctamente según los criterios que nosotros mismos definimos.
+
+Cada miembro ha invertido aproximadamente 27 horas, contando horas de clase y horas de trabajo en casa.
+
+Nos hemos percatado que el emplear material externo ( la api ) puede ser tanto beneficioso como contraproducente, pues es requerido el invertir tiempo en comprender su funcionamiento y el idear un empleo correcto de el mismo para adquirir los resultados deseados, pero de igual manera el hacer uso de una api tambien favorece a que podamos orientar nuestros esfuerzos cara aumentar funcionalidades con las que dispone el usuario final.
+
 ## Autores
 - Adán Otero López/Anonymous180937642012
 - Jesús Santos Baquero/JesusSB06
 - Jose Carlos Domínguez Figueiras/a24josedf
+
 
